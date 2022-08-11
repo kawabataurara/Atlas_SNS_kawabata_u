@@ -11,30 +11,51 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+
 // Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
+// Auth::routes();
 
+
+Route::get('index', 'PostsController@index');
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
-
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
-
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
-Route::get('/top','PostsController@index');
+Route::group(["middleware" => "auth"], function() {
+    Route::get('/top','PostsController@index');
+    // Route::get('/top','PostsController@timeLine');
+    Route::post('/top','PostsController@postTweet');
+    // Route::get('/Timeline','TimelineController@timeLine');
+    // Route::post('/Timeline','TimelineController@postTweet');
 
-Route::get('/profile','UsersController@profile');
+    Route::get('/logout','Auth\LoginController@logout');
 
-Route::get('/search','UsersController@index');
+    Route::get('/profile','UsersController@profile');
+    Route::get('/followerList','FollowsController@followerList');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+    Route::get('/search','UsersController@search')
+    // Route::get('/search', [UsersController::class, 'searchGet'])
+     ->name('users.search');
+    // Route::get('/search','UsersController@search');
+//
+    Route::get('/follow-list','PostsController@index');
+    Route::get('/follower-list','PostsController@index');
+    Route::post('post/update', 'PostsController@update')->name('posts.index');
+    Route::get('post/{id}/delete', 'PostsController@delete');
+
+    // 8/11追加
+    // Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
+    // Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+
+
+});

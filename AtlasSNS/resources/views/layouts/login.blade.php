@@ -8,6 +8,8 @@
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
     <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -18,47 +20,57 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+
 </head>
 <body>
+
     <header>
-        <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+        <div id="head">
+            <div id="head-design">
+                <h1 class="logo-img"><a href="/top"><img src="{{ asset('images/atlas.png') }}" alt="atlas"></a></h1>
             </div>
-        </div>
-    </header>
-    <div id="row">
-        <div id="container">
-            @yield('content')
-        </div >
-        <div id="side-bar">
-            <div id="confirm">
-                <p>〇〇さんの</p>
-                <div>
-                <p>フォロー数</p>
-                <p>〇〇名</p>
-                </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
-                <div>
-                <p>フォロワー数</p>
-                <p>〇〇名</p>
-                </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
-            </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
-        </div>
-    </div>
-    <footer>
-    </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
-</body>
-</html>
+                <div class="header-list">
+                    <div class="user-profile">
+                    <p class="username-box">{{ Auth::user()->username }}さん</p>
+                    <img src="{{ Auth::user()->images }} " alt="icon1">
+                    </div>
+                        <div class="menu">
+                            <div class="sp-menu">
+                                {{-- <span class="material-icons" id="open">menu</span> --}}
+                                <span class="material-symbols-outlined" id="open">expand_more</span>
+                                {{-- </span> --}}
+                             </div>
+                             {{-- <span class="dli-chevron-up" id="close"></span> --}}
+                 </div>
+                  </div>
+                   </div>
+
+                            <div class="overlay">
+                                    <span class="material-icons" id="close">close</span>
+                                            <nav>
+                                                <ul>
+                                                    <li><a href="/top">ホーム</a></li>
+                                                    <li><a href="/profile">プロフィール編集</a></li>
+                                                    <li><a href="/logout">ログアウト</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+
+                            </div>
+                        </header>
+                        <div id="row">
+                            <div id="container">
+                                @yield('content')
+                            </div >
+                                @include('layouts.sidebar')
+                                {{-- @include('users.search') --}}
+
+
+                        </div>
+                        <footer>
+                        </footer>
+                         <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                         <script src="{{ asset('/js/login.js') }}"></script>
+                    </body>
+                    </html>

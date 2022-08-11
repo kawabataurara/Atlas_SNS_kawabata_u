@@ -16,14 +16,23 @@
   <link rel="icon" href="画像URL" sizes="48x48" type="image/png" />
   <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
   <!--iphoneのアプリアイコン指定-->
-  <link rel="apple-touch-icon-precomposed" href="画像のURL" />
+    <link rel="apple-touch-icon-precomposed" href="画像のURL" />
   <!--OGPタグ/twitterカード-->
 </head>
+{{-- <div class="atlas-logout-box"></div> --}}
 <body>
-  <header>
-    <h1><img src="images/atlas.png"></h1>
-    <p>Social Network Service</p>
-  </header>
+    <div class="atlas-box">
+        <div><img src="images/heart.png" class="heart-img"></div>
+        <div><img src="images/heart.png" class="heart-img2"></div>
+        <div><img src="images/heart.png" class="heart-img3"></div>
+        <div><img src="images/angel.png" class="angel up-down"></div>
+
+        <header>
+            <h1><img src="images/atlas.png" class="logout-atlas"></h1>
+            {{-- <p>Social Network Service</p> --}}
+        </header>
+    </div>
+
   <div id="container">
     @yield('content')
   </div>

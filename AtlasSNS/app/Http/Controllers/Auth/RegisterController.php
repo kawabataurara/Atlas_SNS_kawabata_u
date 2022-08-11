@@ -40,20 +40,19 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
+
+    // バリデーションルールの記述7/3
+
+    public function validator(array $data){
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
+            'username' => 'required | string | min:2 | max:12',
+            'mail' => 'required | string | email | min:5 | max:40 | unique:users,mail',
+            'password' => 'required | string | min:8 |  max:20 | confirmed | alpha_num',
+            'password_confirmation' => 'required | same:password',
         ]);
+
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -70,15 +69,18 @@ class RegisterController extends Controller
         ]);
     }
 
-
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
-
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
+            $validator = $this->validator($data);
 
+            // バリデーションが失敗したら
+        if ($validator->fails()) {
+        return redirect('/register')
+            ->withErrors($validator)
+            -> withInput();
+        }
+        // 入力したものをデータベースに保存
             $this->create($data);
             return redirect('added');
         }
@@ -88,4 +90,5 @@ class RegisterController extends Controller
     public function added(){
         return view('auth.added');
     }
+
 }

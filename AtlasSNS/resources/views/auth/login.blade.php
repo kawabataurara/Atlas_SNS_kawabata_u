@@ -4,17 +4,30 @@
 
 {!! Form::open() !!}
 
-<p>AtlasSNSへようこそ</p>
+<p><img src="images/welcome.png" class="welcome-img"></p>
 
-{{ Form::label('e-mail') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
-{{ Form::password('password',['class' => 'input']) }}
+<div class="logout-container">
 
-{{ Form::submit('ログイン') }}
+<p class="label-text">{{ Form::label('e-mail') }}</p>
+<p>{{ Form::text('mail',null,['class' => 'input']) }}</p>
+<p class="label-text">{{ Form::label('password') }}</p>
+<p>{{ Form::password('password',['class' => 'input']) }}</p>
 
-<p><a href="/register">新規ユーザーの方はこちら</a></p>
+{{-- <p>{{ Form::submit('ログイン')}}</p> --}}
+<div class="login-next">
+    <div class="login-position">
+{{-- <p class="login-btn">{{ Form::image("images/loginbtn.png")}}</p> --}}
+<p class="login-btn">{{ Form::submit("")}}</p>
+<img src="images/loginbtn.png"class="login-btn-img">
+<img src="images/next.png" class="next-img">
+</div>
+</div>
 
+<p class="new-user"><a href="/register">新規ユーザーの方はこちら</a></p>
+
+</div>
 {!! Form::close() !!}
+
+
 
 @endsection
