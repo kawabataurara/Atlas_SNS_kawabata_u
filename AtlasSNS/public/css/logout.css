@@ -6,7 +6,36 @@ html{
 
 body{
     height: 100%;
-    background: #0CEBEB;
+    /* background: #0CEBEB; */
+    background-image: url(../images/login-back.png);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    /* background-position: 0 0; */
+    -webkit-animation: r 20s linear infinite;
+    animation: r 20s linear infinite;
+}
+
+@-webkit-keyframes r {
+    from {
+        background-position: center bottom;
+    }
+
+    to {
+        background-position: -150px bottom;
+    }
+}
+
+@keyframes r {
+    from {
+        background-position: 0 bottom;
+    }
+
+    to {
+        background-position: -150px bottom;
+    }
 }
 
 .atlas-logout-box {
@@ -97,8 +126,8 @@ body{
 .angel {
     display: block;
     position: absolute;
-    width: 10%;
-    top: 500px;
+    width: 4%;
+    top: 200px;
     /* left: 0; */
     right: 20%;
 

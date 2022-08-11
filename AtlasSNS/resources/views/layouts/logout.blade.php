@@ -22,9 +22,9 @@
 {{-- <div class="atlas-logout-box"></div> --}}
 <body>
     <div class="atlas-box">
-        <div><img src="images/heart.png" class="heart-img"></div>
-        <div><img src="images/heart.png" class="heart-img2"></div>
-        <div><img src="images/heart.png" class="heart-img3"></div>
+        <div><img src="images/cloud.png" class="heart-img"></div>
+        <div><img src="images/cloud.png" class="heart-img"></div>
+        <div><img src="images/cloud.png" class="heart-img"></div>
         <div><img src="images/angel.png" class="angel up-down"></div>
 
         <header>
