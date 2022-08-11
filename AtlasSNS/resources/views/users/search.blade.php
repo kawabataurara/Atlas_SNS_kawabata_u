@@ -38,14 +38,14 @@
     {{ csrf_field() }}
     {{ method_field('DELETE') }} --}}
 
-    <button type="submit" class="search-follow" value="フォロー解除">
+    <button type="submit" class="search-follow">フォロー解除</button>
         @else
 
          {{-- <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
          {{ csrf_field() }} --}}
 
         <div class="users-follow-btn">
-         <button type="button" class="search-follow" value="フォローする">
+         <button type="submit" class="search-follow">フォローする</button>
          </div>
      @endif
 

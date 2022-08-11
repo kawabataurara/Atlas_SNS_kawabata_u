@@ -53,7 +53,6 @@ class User extends Authenticatable
         return $follow_each;
     }
 
-    // 8/11追加
-     
+
 
 }
