@@ -190,7 +190,8 @@ body{
     right: 0;
     margin: auto;
     cursor: pointer;
-    background-color: #fff!important;
+    background-color: rgb(255, 255, 255) !important;
+    /* background-color: #fff!important; */
     /* width: 20%; */
     }
 
@@ -214,13 +215,33 @@ input {
 
 .new-user {
 display: block;
-font-weight: bold;
-color: #0C92EB;
+/* color: #0C92EB; */
 margin-top: 10px;
 }
 
 .new-user:hover {
-color: #0C92EB;
+/* color: #0C92EB; */
 opacity: 0.6;
 transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.new-user-design {
+color: #000!important;
+font-weight: bold;
+}
+
+/* register画面 */
+
+.register-body {
+    height: 80%;
+
+}
+
+.register-btn {
+    height: 30px!important;
+    margin: 20px auto !important;
+}
+
+.register-next {
+    width: 2%!important;
 }

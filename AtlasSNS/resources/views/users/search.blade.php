@@ -33,21 +33,21 @@
          {{-- フォロー機能の実装 --}}
 @foreach ($users as $user)
   @if(in_array($user->id,Auth::user()->follow_each()))
-{{-- フォロー機能の実装の終了タグ --}}
-{{-- <form action="{{ route('unfollow', ['id' => $user->id]) }}" method="POST">
-    {{ csrf_field() }}
-    {{ method_field('DELETE') }} --}}
+    {{-- フォロー機能の実装の終了タグ --}}
+    <form action="{{ route('unfollow', ['id' => $user->id]) }}" method="POST">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+            <button type="submit" class="search-follow">フォロー解除</button>
+    </form>
+  @else
 
-    <button type="submit" class="search-follow">フォロー解除</button>
-        @else
-
-         {{-- <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
-         {{ csrf_field() }} --}}
-
-        <div class="users-follow-btn">
-         <button type="submit" class="search-follow">フォローする</button>
-         </div>
-     @endif
+    <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
+        {{ csrf_field() }}
+            <div class="users-follow-btn">
+                <button type="submit" class="search-follow">フォローする</button>
+            </div>
+  @endif
+    </form>
 
 
 @endforeach

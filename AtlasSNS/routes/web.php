@@ -54,8 +54,9 @@ Route::group(["middleware" => "auth"], function() {
     Route::get('post/{id}/delete', 'PostsController@delete');
 
     // 8/11追加
-    // Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
-    // Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+    // Route::post('/search/{user}/follow', 'UsersController@follow')->name('follow');
+    Route::post('/search', 'UsersController@follow')->name('follow');
+    Route::delete('/search', 'UsersController@unfollow')->name('unfollow');
 
 
 });

@@ -2,43 +2,51 @@
 
 @section('content')
 
+<div class="logout-container register-body">
+
 {!! Form::open() !!}
 
-<h2>新規ユーザー登録</h2>
+{{-- <h2>新規ユーザー登録</h2> --}}
 
-{{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
+<p class="label-text">{{ Form::label('ユーザー名') }}</p>
+{{ Form::text('username', null, ['class' => 'input', 'placeholder' =>'アトラス新一']) }}
 
 @error('username')
   <li>{{$message}}</li>
 @enderror
 
-{{ Form::label('メールアドレス') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
+<p class="label-text">{{ Form::label('メールアドレス') }}</p>
+{{ Form::text('mail',null,['class' => 'input', 'placeholder' =>'shinichi@atlas.com']) }}
 
 @error('mail')
   <li>{{$message}}</li>
 @enderror
 
-{{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+<p class="label-text">{{ Form::label('パスワード') }}</p>
+{{ Form::text('password',null,['class' => 'input', 'placeholder' =>'tuyosounayatu123']) }}
 
 @error('password')
   <li>{{$message}}</li>
 @enderror
 
 
-{{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+<p class="label-text">{{ Form::label('パスワード確認') }}</p>
+{{ Form::text('password_confirmation',null,['class' => 'input', 'placeholder' =>'tuyosounayatu123']) }}
 
 
 
+<div class="login-next register-btn">
+<div class="login-position">
+<p class="login-btn">{{ Form::submit('') }}</p>
+<img src="images/registerbtn.png"class="login-btn-img">
+<img src="images/next.png" class="next-img register-next">
+</div>
+</div>
 
-{{ Form::submit('登録') }}
-
-<p><a href="/login">ログイン画面へ戻る</a></p>
+<p><a href="/login" class="new-user-design">ログイン画面へ戻る</a></p>
 
 {!! Form::close() !!}
+</div>
 
 
 @endsection

@@ -23,7 +23,7 @@
 </div>
 </div>
 
-<p class="new-user"><a href="/register">新規ユーザーの方はこちら</a></p>
+<p class="new-user"><a href="/register" class="new-user-design">新規ユーザーの方はこちら</a></p>
 
 </div>
 {!! Form::close() !!}
