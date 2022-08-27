@@ -13,8 +13,8 @@
 </div>
 
 
-@forelse ($users as $user)
-
+@foreach ($users as $user)
+   <div class="user-list-box">
     <div class="search-list">
         <tr>
             <img src="{{ asset('images/icon2.png') }}" alt="ユーザーアイコン">
@@ -24,12 +24,13 @@
             {{-- <td>{{ $user->username }}</td> --}}
         </tr>
     </div>
-  @empty
+
+{{-- 空だったら --}}
+  @if($users->isEmpty())
     <td>No user</td>
-  @endforelse
+  @endif
 
          {{-- フォロー機能の実装 --}}
-@foreach ($users as $user)
   @if(in_array($user->id,Auth::user()->follow_each()))
     {{-- フォロー機能の実装の終了タグ --}}
     <form action="{{ route('unfollow', ['id' => $user->id]) }}" method="POST">
@@ -44,11 +45,14 @@
             <div class="users-follow-btn">
                 <button type="submit" class="search-follow">フォローする</button>
             </div>
-  @endif
     </form>
-
+  @endif
+    </div>
 
 @endforeach
+
+
+
 
 
 

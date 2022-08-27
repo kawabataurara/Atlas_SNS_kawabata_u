@@ -493,9 +493,13 @@ main {
     display: flex;
     /* justify-content: space-around; */
     flex-wrap: wrap;
-    width: 100%;
+    width: 50%;
     align-items: center;
-    margin-top: 20px;
+}
+
+.search-list img {
+    display: block;
+    width: 40px;
 }
 
 .after-search {
@@ -504,10 +508,6 @@ main {
     margin-left: 8px;
 }
 
-.search-list img {
-    display: block;
-    width: 40px;
-}
 
 .search-follow {
     display: flex;
@@ -532,4 +532,11 @@ main {
 .createbox {
     display: block;
     margin: 66px auto 0;
+}
+
+
+.user-list-box {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
