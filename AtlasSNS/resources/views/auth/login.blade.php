@@ -4,7 +4,7 @@
 
 {!! Form::open() !!}
 
-<p><img src="images/welcome.png" class="welcome-img"></p>
+{{-- <p><img src="images/welcome.png" class="welcome-img"></p> --}}
 
 <div class="logout-container">
 
