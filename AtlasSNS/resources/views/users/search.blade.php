@@ -24,8 +24,6 @@
             {{-- <td>{{ $user->username }}</td> --}}
         </tr>
     </div>
-
-
   @empty
     <td>No user</td>
   @endforelse
