@@ -49,6 +49,7 @@ class LoginController extends Controller
                 return redirect('/top');
             }
         }
+        // return view("auth.login",['login_error' => '1']);
         return view("auth.login");
     }
 

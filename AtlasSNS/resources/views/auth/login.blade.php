@@ -8,19 +8,36 @@
 
 <div class="logout-container">
 
+{{-- パスワードが違うときのエラーを出すその2 0828 --}}
+{{-- @if (isset($login_error))
+  <div id="error_explanation" class="text-danger">
+    <ul>
+      <li>メールアドレスまたはパスワードが一致しません。</li>
+    </ul>
+  </div>
+@endif --}}
+
 <p class="label-text">{{ Form::label('e-mail') }}</p>
 <p>{{ Form::text('mail',null,['class' => 'input']) }}</p>
+
+{{-- パスワードが違うときのエラーを出す0828 --}}
+{{-- @error('mail')
+   <span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+   </span>
+@enderror --}}
 <p class="label-text">{{ Form::label('password') }}</p>
-<p>{{ Form::password('password',['class' => 'input']) }}</p>
+<p>{{ Form::password('password', ['class' => 'input']) }}</p>
+
+@error('password')
+   <span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+   </span>
+@enderror
 
 {{-- <p>{{ Form::submit('ログイン')}}</p> --}}
 <div class="login-next">
-    <div class="login-position">
-{{-- <p class="login-btn">{{ Form::image("images/loginbtn.png")}}</p> --}}
-<p class="login-btn">{{ Form::submit("")}}</p>
-<img src="images/loginbtn.png"class="login-btn-img">
-<img src="images/next.png" class="next-img">
-</div>
+    <div class="login-btn-img">{{ Form::image("images/loginbtn.png")}}</div>
 </div>
 
 <p class="new-user"><a href="/register" class="new-user-design">新規ユーザーの方はこちら</a></p>

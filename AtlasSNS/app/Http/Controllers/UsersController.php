@@ -26,11 +26,11 @@ class UsersController extends Controller{
         $auth = Auth::user();
         return view('users.profile',[ 'auth' => $auth ]);
     }
-    // protected function create(array $data){
-    //     return User::create([
-    //         'bio' => $data['bio']
-    //     ]);
-    // }
+    protected function createProfile(array $data){
+        return User::create([
+            'bio' => $data['bio']
+        ]);
+    }
 
     public function update(Request $request){
         // if($request->isMethod('post')){
@@ -90,7 +90,7 @@ class UsersController extends Controller{
         // フォロー
     public function follow(User $user)
     {
-        dd($user);
+        // dd($user);
         // $user = User::find($id);
         $follower = auth()->user();
         // フォローしているか
