@@ -90,7 +90,7 @@ class UsersController extends Controller{
         // フォロー
     public function follow(User $user)
     {
-        // dd($user);
+        dd($user->id);
         // $user = User::find($id);
         $follower = auth()->user();
         // フォローしているか

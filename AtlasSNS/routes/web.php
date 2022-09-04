@@ -50,7 +50,7 @@ Route::group(["middleware" => "auth"], function() {
     // Route::get('/search', [UsersController::class, 'searchGet'])
      ->name('users.search');
     // Route::get('/search','UsersController@search');
-//
+    //
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');
     Route::post('post/update', 'PostsController@update')->name('posts.index');
@@ -58,8 +58,10 @@ Route::group(["middleware" => "auth"], function() {
 
     // 8/11追加
     // Route::post('/search/{user}/follow', 'UsersController@follow')->name('follow');
-    Route::post('/search', 'UsersController@follow')->name('follow');
-    Route::delete('/search', 'UsersController@unfollow')->name('unfollow');
+    // Route::post('/search', 'UsersController@follow')->name('follow');
+    // Route::delete('/search', 'UsersController@unfollow')->name('unfollow');
 
+    Route::post('search/{user}', 'UsersController@follow')->name('follow');
+    Route::delete('search/{user}', 'UsersController@unfollow')->name('unfollow');
 
 });
