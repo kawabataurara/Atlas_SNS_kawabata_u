@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use App\User;
+use App\Follow;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -88,30 +89,40 @@ class UsersController extends Controller{
 
     // 8/14記述
         // フォロー
-    public function follow(User $user)
+    public function follow($id)
     {
-        dd($user->id);
+        // dd($id);
         // $user = User::find($id);
         $follower = auth()->user();
         // フォローしているか
-        $is_following = $follower->isFollowing($user->id);
+        $is_following = $follower->isFollowing($id);
         if(!$is_following) {
             // フォローしていなければフォローする
-            $follower->follow($user->id);
+            $follower->follow($id);
             return back();
         }
     }
 
     // フォロー解除
-    public function unfollow(User $user)
+    public function unfollow($id)
     {
         $follower = auth()->user();
         // フォローしているか
-        $is_following = $follower->isFollowing($user->id);
+        $is_following = $follower->isFollowing($id);
         if($is_following) {
             // フォローしていればフォローを解除する
-            $follower->unfollow($user->id);
+            $follower->unfollow($id);
             return back();
         }
     }
+
+    // フォロワー数をサイドバーに表示(実装途中)
+    // public function sidebar(User $follower)
+    // {
+    //     $follower_count = $follower->getFollowerCount($id);
+
+    //     return view('layouts.sidebar', [
+    //         'follower_count' => $follower_count
+    //     ]);
+    // }
 }

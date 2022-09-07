@@ -41,18 +41,20 @@
         {{-- <form action="" method="POST"> --}}
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
-            <a href="{{route('unfollow', $user)}}" class="search-follow">
-                <button type="submit"></button>フォロー解除</button></a>
+            {{-- <a href="{{route('unfollow', $user)}}" class="search-follow"> --}}
+                <button type="submit">フォロー解除</button>
+            {{-- </a> --}}
         </form>
         @else
 
 
     </div>
-    {{-- <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST"> --}}
+    <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
         {{ csrf_field() }}
         {{-- <div class= "users-follow-btn"> --}}
-            <a href="{{route('follow', $user)}}" class="search-follow">
-                <button type="submit">フォローする</button></a>
+            {{-- <a href="{{route('follow', $user)}}" class="search-follow"> --}}
+                <button type="submit">フォローする</button>
+            {{-- </a> --}}
             {{-- </div> --}}
         </form>
         @endif

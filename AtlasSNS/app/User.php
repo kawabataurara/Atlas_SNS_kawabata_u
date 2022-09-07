@@ -27,13 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function follows() {
-        // return $this->hasMany(\App\Follow::class, 'username', 'id');
-        return $this->hasMany('\App\Follow');
-    }
+    // public function follows() {
+    //     return $this->hasMany('\App\Follow');
+    // }
 
     //このユーザがフォローしている人を取得
-    public function followings()
+    public function follows()
         {
             return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id')->withTimestamps();
         }
@@ -46,8 +45,8 @@ class User extends Authenticatable
 
         public function follow_each(){
         //ユーザがフォロー中のユーザを取得
-        $userIds = $this->followings()->pluck('users.id')->toArray();
-       //相互フォロー中のユーザを取得
+        $userIds = $this->follows()->pluck('users.id')->toArray();
+        //相互フォロー中のユーザを取得
         $follow_each = $this->followers()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
        //相互フォロー中のユーザを返す
         return $follow_each;
@@ -72,13 +71,13 @@ class User extends Authenticatable
     // フォローしているか
     public function isFollowing(Int $user_id)
     {
-        return (boolean) $this->follows()->where('followed_id', $user_id)->first(['id']);
+        return (boolean) $this->follows()->where('followed_id', $user_id)->first(['follows.id']);
     }
 
     // フォローされているか
     public function isFollowed(Int $user_id)
     {
-        return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
+        return (boolean) $this->followers()->where('following_id', $user_id)->first(['follows.id']);
     }
 
 
