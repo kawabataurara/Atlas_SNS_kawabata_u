@@ -34,16 +34,6 @@ class UsersController extends Controller{
     }
 
     public function update(Request $request){
-        // if($request->isMethod('post')){
-        //     $data = $request->input();
-        //     $validator = $this->validator($data);
-        // }
-            // バリデーションが失敗したら
-        // if ($validator->fails()) {
-        // return redirect('/profile')
-        //     ->withErrors($validator)
-        //     -> withInput();
-        // }
         $id = $request->input('id');
         $username = $request->input('username');
         $mail = $request->input('mail');
@@ -55,14 +45,22 @@ class UsersController extends Controller{
         ->update(
             ['username' => $username],
             ['mail' => $mail],
-            ['password' => $password],
-            ['bio' => $bio],
+            // ['password' => bcrypt($password)],
+            // ['bio' => $bio],
             ['images' => $images]
         );
-        // $this->create($data);
+
+        // パスワードが更新できなかったので、自己紹介、パスワードのみの実装→登録できた
+         \DB::table('users')
+         ->where('id', $id)
+        ->update(
+            ['password' => bcrypt($password)],
+            ['bio' => $bio],
+        );
         return redirect('profile');
 
     }
+
 
 
 

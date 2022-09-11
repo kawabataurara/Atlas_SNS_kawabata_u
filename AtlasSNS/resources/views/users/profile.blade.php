@@ -2,7 +2,10 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'users/{id}/update']) !!}
+ {{-- <form method="POST" action="" enctype="multipart/form-data"> --}}
+  {{-- <form route="profile/{id}/update" method="post" enctype='multipart/form-data'>
+        {{ csrf_field() }} --}}
+{!! Form::open(['url' => 'profile/{id}/update']) !!}
     {!! Form::hidden('id', $auth->id) !!}
 
 
@@ -36,9 +39,12 @@
             <p>{{ Form::file('images',null,['class' => 'icon-images']) }}</p>
         </div>
 
+
+
+
         {{Form::submit('更新', ['class'=>'btn btn-primary btn-block'])}}
+ {!! Form::close() !!}
 
 
-{!! Form::close() !!}
 
 @endsection

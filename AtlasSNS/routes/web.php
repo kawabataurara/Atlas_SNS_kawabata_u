@@ -41,7 +41,8 @@ Route::group(["middleware" => "auth"], function() {
     Route::get('/logout','Auth\LoginController@logout');
 
     Route::get('/profile','UsersController@profile');
-    Route::post('users/{id}/update','UsersController@update');
+    // Route::post('profile/{id}/file','UsersController@file')->name('profile.file');
+    Route::post('profile/{id}/update','UsersController@update');
     Route::post('/sidebar', 'UsersController@sidebar');
 
     // Route::post('/profile','UsersController@profile');

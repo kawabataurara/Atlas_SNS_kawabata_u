@@ -18,7 +18,8 @@
     <div class="search-list">
         <tr>
             <img src="{{ asset('images/icon2.png') }}" alt="ユーザーアイコン">
-            <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">{{ $user->username }}
+            <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">
+                {{ $user->username }}
             {{-- {{ $user->images }} --}}
             </td></a>
             {{-- <td>{{ $user->username }}</td> --}}
