@@ -5,7 +5,9 @@
  {{-- <form method="POST" action="" enctype="multipart/form-data"> --}}
   {{-- <form route="profile/{id}/update" method="post" enctype='multipart/form-data'>
         {{ csrf_field() }} --}}
-{!! Form::open(['url' => 'profile/{id}/update']) !!}
+{{-- {!! Form::open(['url' => 'profile/{id}/update', 'method' => 'post', 'files' => true]) !!} --}}
+{!! Form::open(['route' => ['profile/{id}/update'], 'method' => 'post', 'files' => true]) !!}
+
     {!! Form::hidden('id', $auth->id) !!}
 
 
@@ -36,8 +38,11 @@
 
         <div class="user-profile">
             <p>{{Form::label('images','アイコン')}}</p>
-            <p>{{ Form::file('images',null,['class' => 'icon-images']) }}</p>
+            <p>{{ Form::file('images',null,['class' => 'icon-images', 'name' => 'icon' ]) }}</p>
         </div>
+
+        {{-- <img src="{{ asset('storage/avatar' . $user->icon) }}" /> --}}
+
 
 
 

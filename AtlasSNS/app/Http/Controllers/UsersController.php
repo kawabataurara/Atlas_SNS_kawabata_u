@@ -39,27 +39,39 @@ class UsersController extends Controller{
         $mail = $request->input('mail');
         $password = $request->input('password');
         $bio = $request->input('bio');
-        $images = $request->input('images');
+        // $images = $request->input('images');
         \DB::table('users')
         ->where('id', $id)
         ->update(
-            ['username' => $username],
-            ['mail' => $mail],
-            // ['password' => bcrypt($password)],
-            // ['bio' => $bio],
-            ['images' => $images]
-        );
-
-        // パスワードが更新できなかったので、自己紹介、パスワードのみの実装→登録できた
-         \DB::table('users')
-         ->where('id', $id)
-        ->update(
-            ['password' => bcrypt($password)],
-            ['bio' => $bio],
-        );
+            ['username' => $username,
+            'mail' => $mail,
+            'password' => bcrypt($password),
+            'bio' => $bio,
+            // 'images' => $images
+        ]);
         return redirect('profile');
-
     }
+
+    public function icon(Request $request)
+    {
+        $user = new User;
+
+        // name属性が'icon'のinputタグをファイル形式に、画像をpublic/avatarに保存
+        $image_path = $request->file('icon')->icon('public/avatar/');
+
+        // 上記処理にて保存した画像に名前を付け、userテーブルのimagesカラムに、格納
+        $user->images = basename($image_path);
+
+        $user->save();
+
+        return redirect()->route('users.profile');
+    }
+
+    public function icon2(){
+        $user = User::all();
+
+        return view('users.profile', $user);
+}
 
 
 
