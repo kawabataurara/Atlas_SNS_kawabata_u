@@ -12,7 +12,9 @@ class PostsController extends Controller
     public function index(){
 
         $posts = Post::latest()->get();
+        dd($posts);
         return view('posts.index', compact('posts'));
+
         // return view('posts.index');
     }
 
@@ -54,20 +56,21 @@ class PostsController extends Controller
 
     }
 
-//     public function show(){
-//         // Postモデル経由でpostsテーブルのレコードを取得
-//         $posts = Post::get();
-//         return view('posts.index', compact('posts'));
-// }
-
     public function show(){
-// フォローしているユーザーのidを取得
-  $following_id = Auth::user()->follows()->pluck('id');
+        // Postモデル経由でpostsテーブルのレコードを取得
+        $posts = Post::get();
+        return view('posts.index', compact('posts'));
 
-// フォローしているユーザーのidを元に投稿内容を取得
-  $posts = Post::with('user')->whereIn('follows', $following_id)->get();
-
-  return view('yyyy', compact('posts'));
 }
+
+//     public function show(){
+// // フォローしているユーザーのidを取得
+//   $following_id = Auth::user()->follows()->pluck('id');
+
+// // フォローしているユーザーのidを元に投稿内容を取得
+//   $posts = Post::with('user')->whereIn('follows', $following_id)->get();
+
+//   return view('yyyy', compact('posts'));
+// }
 
 }

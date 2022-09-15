@@ -21,8 +21,8 @@
     <div class="tweet-box">
         <div class="tweet-wrapper">
             <tr>
-                {{-- <td>{{ $post->user->username }}</td>
-                <p><td>{{ $post->post }}</td></p> --}}
+                <td>{{ $post->user->username }}</td>
+                <p><td>{{ $post->post }}</td></p>
             </tr>
             <div class="content tweet-wrapper-btn">
                 <a class="js-modal-open" post="{{ $post->post }}" post_id="{{ $post->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集">
@@ -31,11 +31,11 @@
                 <td><a href="/post/{{$post->id}}/delete"><img src="{{ asset('images/trash-h.png') }}" class="trash-btn" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')" alt="削除"></a></td>
             </div>
 
-            {{-- <div class="follower-tweet">
+            <div class="follower-tweet">
                 @foreach($posts as $post)
                     <p>名前：{{ $post->user->username }}</p>
                     <p>投稿内容：{{ $post->post }}</p>
-                @endforeach --}}
+                @endforeach
             </div>
          </div>
     </div>
