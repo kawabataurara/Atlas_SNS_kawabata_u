@@ -36,11 +36,8 @@
                     </div>
                         <div class="menu">
                             <div class="sp-menu">
-                                {{-- <span class="material-icons" id="open">menu</span> --}}
                                 <span class="material-symbols-outlined" id="open">expand_more</span>
-                                {{-- </span> --}}
                              </div>
-                             {{-- <span class="dli-chevron-up" id="close"></span> --}}
                  </div>
                   </div>
                    </div>
@@ -64,7 +61,6 @@
                                 @yield('content')
                             </div >
                                 @include('layouts.sidebar')
-                                {{-- @include('users.search') --}}
 
 
                         </div>

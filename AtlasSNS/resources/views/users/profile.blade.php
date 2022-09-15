@@ -6,7 +6,7 @@
   {{-- <form route="profile/{id}/update" method="post" enctype='multipart/form-data'>
         {{ csrf_field() }} --}}
 {{-- {!! Form::open(['url' => 'profile/{id}/update', 'method' => 'post', 'files' => true]) !!} --}}
-{!! Form::open(['route' => ['profile/{id}/update'], 'method' => 'post', 'files' => true]) !!}
+{!! Form::open(['url' => 'profile/{id}/update', 'method' => 'post', 'files' => true]) !!}
 
     {!! Form::hidden('id', $auth->id) !!}
 

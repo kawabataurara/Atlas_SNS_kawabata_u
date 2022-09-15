@@ -52,26 +52,26 @@ class UsersController extends Controller{
         return redirect('profile');
     }
 
-    public function icon(Request $request)
-    {
-        $user = new User;
+    // public function icon(Request $request)
+    // {
+    //     $user = new User;
 
         // name属性が'icon'のinputタグをファイル形式に、画像をpublic/avatarに保存
-        $image_path = $request->file('icon')->icon('public/avatar/');
+        // $image_path = $request->file('icon')->icon('public/avatar/');
 
         // 上記処理にて保存した画像に名前を付け、userテーブルのimagesカラムに、格納
-        $user->images = basename($image_path);
+//         $user->images = basename($image_path);
 
-        $user->save();
+//         $user->save();
 
-        return redirect()->route('users.profile');
-    }
+//         return redirect()->route('users.profile');
+//     }
 
-    public function icon2(){
-        $user = User::all();
+//     public function icon2(){
+//         $user = User::all();
 
-        return view('users.profile', $user);
-}
+//         return view('users.profile', $user);
+// }
 
 
 
