@@ -6,7 +6,7 @@
             <p>フォロー数</p>
             <p>{{ Auth::user()->follows()->count() }}名</p>
         </div>
-        <a href="/followList" class="follow-btn">フォローリスト</a>
+        <a href="../follows/followList.blade.php" class="follow-btn">フォローリスト</a>
 
         <div class="follow">
             <p>フォロワー数</p>

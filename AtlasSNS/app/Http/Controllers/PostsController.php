@@ -9,10 +9,10 @@ use App\Post;
 class PostsController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
 
         $posts = Post::latest()->get();
-        dd($posts);
         return view('posts.index', compact('posts'));
 
         // return view('posts.index');
@@ -23,7 +23,7 @@ class PostsController extends Controller
     {
         // バリデーションの実装
         $validator = $request->validate([
-            'post' => ['required', 'max:200'],
+            'post' => ['required', 'max:200']
         ]);
 
         Post::create([
@@ -35,7 +35,7 @@ class PostsController extends Controller
     }
 
      public function delete($id)
-    {
+     {
         \DB::table('posts')
         ->where('id', $id)
         ->delete();
@@ -56,7 +56,8 @@ class PostsController extends Controller
 
     }
 
-    public function show(){
+    public function show()
+    {
         // Postモデル経由でpostsテーブルのレコードを取得
         $posts = Post::get();
         return view('posts.index', compact('posts'));

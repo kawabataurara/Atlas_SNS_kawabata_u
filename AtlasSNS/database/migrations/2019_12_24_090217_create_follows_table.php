@@ -13,7 +13,8 @@ class CreateFollowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('follows', function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table)
+        {
             $table->integer('id')->autoIncrement();
             $table->integer('following_id');
             $table->integer('followed_id');
@@ -26,7 +27,7 @@ class CreateFollowsTable extends Migration
             //referencesメソッドで、従テーブルのfollowing_idと紐付いている主テーブルのidを指定する。
             //onメソッドで主テーブルusersを指定する。
             //onDeleteメソッドでuserが削除・更新された場合の処理を記述する。今回、引数はcascadeを指定する。
-            
+
             $table->foreign('followed_id')->references('id')->on('users')->onDelete('cascade');
 
             // following_idとfollowed_idの組み合わせの重複を許さない

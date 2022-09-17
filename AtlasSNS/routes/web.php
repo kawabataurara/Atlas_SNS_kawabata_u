@@ -43,12 +43,13 @@ Route::group(["middleware" => "auth"], function() {
     Route::get('/profile','UsersController@profile');
     // Route::post('profile/{id}/file','UsersController@file')->name('profile.file');
     Route::post('profile/{id}/update','UsersController@update');
-    // Route::post('profile/icon','UsersController@icon');
-    // Route::post('profile/{id}/icon2','UsersController@icon2');
+    Route::post('profile/icon','UsersController@icon');
+    Route::post('profile/{id}/icon2','UsersController@icon2');
     Route::post('/sidebar', 'UsersController@sidebar');
 
     // Route::post('/profile','UsersController@profile');
     Route::get('/followerList','FollowsController@followerList');
+    Route::get('/followList','FollowsController@followList');
 
     Route::get('/search','UsersController@search')
     // Route::get('/search', [UsersController::class, 'searchGet'])

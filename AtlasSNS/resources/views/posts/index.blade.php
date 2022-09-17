@@ -47,7 +47,8 @@
                 <form action="{{ route('posts.index') }}" method="post">
                     @csrf
                      <textarea class="modal_post" name="upPost"></textarea>
-                      <input type="hidden" name="id" class="modal_id" value="{{$post->id}}">
+                      {{-- <input type="hidden" name="id" class="modal_id" value="{{$post->id}}"> --}}
+                      <input type="hidden" name="id" class="modal_id">
                       <div class="btn-zone">
                     <input type="image" src="{{ asset('images/edit.png') }}" class="edit-btn2 modal_id" value="更新" alt="更新">
                 </form>
