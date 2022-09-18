@@ -19,11 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('username',255);
             $table->string('mail',255);
             $table->string('password',255);
-            $table->string('password_confirmation',255);
+            // $table->string('password_confirmation',255);
             $table->string('bio',400)->nullable();
             // 画像に255っているのか？
-            // $table->string('images',255)->default('dawn.png');
-            $table->string('images')->default('dawn.png');
+            $table->string('images',255)->default('dawn.png');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('current_timestamp on update current_timestamp'));
         });

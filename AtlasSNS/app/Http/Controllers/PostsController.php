@@ -23,7 +23,7 @@ class PostsController extends Controller
     {
         // バリデーションの実装
         $validator = $request->validate([
-            'post' => ['required', 'max:200']
+            'post' => ['required', 'max:200'],
         ]);
 
         Post::create([

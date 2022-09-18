@@ -38,7 +38,7 @@
 
         <div class="user-profile">
             <p>{{Form::label('images','アイコン')}}</p>
-            <p>{{ Form::file('images',null,['class' => 'icon-images', 'name' => 'icon' ]) }}</p>
+            <p>{{ Form::file('images',$auth->images,['class' => 'icon-images', 'name' => 'images' ]) }}</p>
         </div>
 
         {{-- <img src="{{ asset('storage/avatar' . $user->icon) }}" /> --}}

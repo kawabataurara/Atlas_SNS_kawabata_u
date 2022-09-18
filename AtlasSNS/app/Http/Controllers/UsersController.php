@@ -53,38 +53,34 @@ class UsersController extends Controller
             'bio' => $bio,
             // 'images' => $images
         ]);
+
+
+        // 画像フォームでリクエストした画像を取得
+        $img = $request->file('images');
+
+       if (isset($img)) {
+            // storage > public > img配下に画像が保存される
+            $path = $img->store('img','public');
+            // store処理が実行できたらDBに保存処理を実行
+            if ($path) {
+
+        // DBに登録する処理
+        User::create([
+            'images' => $path,
+        ]);
+            }
+        }
+
         return redirect('profile');
+        
     }
 
-    public function icon(Request $request)
+
+
+
+
+    public function search(Request $request)
     {
-        $user = new User;
-
-        // name属性が'icon'のinputタグをファイル形式に、画像をpublic/avatarに保存
-        $image_path = $request->file('icon')->icon('public/avatar/');
-
-        // 上記処理にて保存した画像に名前を付け、userテーブルのimagesカラムに、格納
-        $user->images = basename($image_path);
-
-        $user->save();
-
-        return redirect()->route('users.profile');
-    }
-
-    public function icon2()
-    {
-        $user = User::all();
-
-        return view('users.profile', $user);
-}
-
-
-
-
-
-
-
-    public function search(Request $request){
         // return view('users.search');
 
         $keyword = $request->input('keyword');
