@@ -44,7 +44,7 @@ Route::group(["middleware" => "auth"], function() {
     // Route::post('profile/{id}/file','UsersController@file')->name('profile.file');
     Route::post('profile/{id}/update','UsersController@update');
     // Route::post('profile/icon','UsersController@icon');
-    Route::post('profile/{id}/icon2','UsersController@icon2');
+    // Route::post('profile/{id}/icon2','UsersController@icon2');
     Route::post('/sidebar', 'UsersController@sidebar');
 
     // Route::post('/profile','UsersController@profile');
@@ -58,6 +58,7 @@ Route::group(["middleware" => "auth"], function() {
     //
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');
+        Route::post('posts/index','PostsController@show');
     Route::post('post/update', 'PostsController@update')->name('posts.index');
     Route::get('post/{id}/delete', 'PostsController@delete');
 

@@ -43,7 +43,18 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $password = $request->input('password');
         $bio = $request->input('bio');
-        // $images = $request->input('images');
+
+        // もし画像があれば
+        if($request->hasFile('images')){
+        $path = $request->file('images')->store('public');
+        // $user->images = basename($path);
+        \DB::table('users')
+        ->where('id', $id)
+        ->update(
+            ['images' => basename($path)
+            ]);
+        }
+
         \DB::table('users')
         ->where('id', $id)
         ->update(
@@ -51,28 +62,10 @@ class UsersController extends Controller
             'mail' => $mail,
             'password' => bcrypt($password),
             'bio' => $bio,
-            // 'images' => $images
         ]);
-
-
-        // 画像フォームでリクエストした画像を取得
-        $img = $request->file('images');
-
-       if (isset($img)) {
-            // storage > public > img配下に画像が保存される
-            $path = $img->store('img','public');
-            // store処理が実行できたらDBに保存処理を実行
-            if ($path) {
-
-        // DBに登録する処理
-        User::create([
-            'images' => $path,
-        ]);
-            }
-        }
 
         return redirect('profile');
-        
+
     }
 
 
@@ -127,13 +120,5 @@ class UsersController extends Controller
         }
     }
 
-    // フォロワー数をサイドバーに表示(実装途中)
-    // public function sidebar(User $follower)
-    // {
-    //     $follower_count = $follower->getFollowerCount($id);
 
-    //     return view('layouts.sidebar', [
-    //         'follower_count' => $follower_count
-    //     ]);
-    // }
 }

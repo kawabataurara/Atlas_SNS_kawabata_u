@@ -22,7 +22,7 @@
         <div class="tweet-wrapper">
             <tr>
                 <td>{{ $post->user->username }}</td>
-                <p><td>{{ $post->post }}</td></p>
+                <td>{{ $post->post }}</td>
             </tr>
             <div class="content tweet-wrapper-btn">
                 <a class="js-modal-open" post="{{ $post->post }}" post_id="{{ $post->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集">
@@ -32,10 +32,10 @@
             </div>
 
             <div class="follower-tweet">
-                @foreach($posts as $post)
+                {{-- @foreach($posts as $post)
                     <p>名前：{{ $post->user->username }}</p>
-                    <p>投稿内容：{{ $post->post }}</p>
-                @endforeach
+                    <p>投稿内容：{{ $post->post }}</p> --}}
+                {{-- @endforeach --}}
             </div>
          </div>
     </div>
