@@ -53,6 +53,10 @@ class User extends Authenticatable
     }
 
 
+        public function test($user_id){
+            return (boolean) $this->follows()->where('followed_id', $user_id)->first();
+
+        }
 
 
     // 8/14記述
@@ -63,7 +67,7 @@ class User extends Authenticatable
     }
 
     // フォロー解除する
-    public function unfollow(Int $user_id)
+    public function UnFollow(Int $user_id)
     {
         return $this->follows()->detach($user_id);
     }

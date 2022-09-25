@@ -108,14 +108,14 @@ class UsersController extends Controller
     }
 
     // フォロー解除
-    public function unfollow($id)
+    public function UnFollow($id)
     {
         $follower = auth()->user();
         // フォローしているか
         $is_following = $follower->isFollowing($id);
         if($is_following) {
             // フォローしていればフォローを解除する
-            $follower->unfollow($id);
+            $follower->UnFollow($id);
             return back();
         }
     }

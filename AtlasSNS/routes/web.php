@@ -65,11 +65,11 @@ Route::group(["middleware" => "auth"], function() {
     // 8/11追加
     // Route::post('/search/{user}/follow', 'UsersController@follow')->name('follow');
     // Route::post('/search', 'UsersController@follow')->name('follow');
-    // Route::delete('/search', 'UsersController@unfollow')->name('unfollow');
+    // Route::delete('/search', 'UsersController@UnFollow')->name('UnFollow');
 
     // パラメータを追加
     Route::post('search/{id}', 'UsersController@follow')->name('follow');
-    Route::delete('search/{id}', 'UsersController@unfollow')->name('unfollow');
+    Route::delete('search/{id}', 'UsersController@UnFollow')->name('UnFollow');
 
 
 
