@@ -52,10 +52,11 @@ Route::group(["middleware" => "auth"], function() {
     Route::get('/followList','FollowsController@followList');
 
     Route::get('/search','UsersController@search')
-    // Route::get('/search', [UsersController::class, 'searchGet'])
      ->name('users.search');
-    // Route::get('/search','UsersController@search');
-    //
+
+    Route::post('/followList/{id}','UsersController@followList')
+     ->name('follows.followList');
+
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');
         Route::post('posts/index','PostsController@show');
@@ -70,7 +71,9 @@ Route::group(["middleware" => "auth"], function() {
     // パラメータを追加
     Route::post('search/{id}', 'UsersController@follow')->name('follow');
     Route::delete('search/{id}', 'UsersController@UnFollow')->name('UnFollow');
+    // Route::post('followList/{id}', 'UsersController@followList')->name('followList');
 
+    // Route::post('followList/{id}', 'UsersController@follow')->name('follow');
 
 
 

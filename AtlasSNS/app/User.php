@@ -37,26 +37,30 @@ class User extends Authenticatable
             return $this->belongsToMany(User::class, 'follows', 'following_id','followed_id')->withTimestamps();
         }
 
+
     //このユーザをフォローしている人を取得
     public function followers()
         {
             return $this->belongsToMany(User::class, 'follows', 'followed_id','following_id')->withTimestamps();
         }
 
-        public function follow_each(){
-        //ユーザがフォロー中のユーザを取得
-        $userIds = $this->follows()->pluck('users.id')->toArray();
-        //相互フォロー中のユーザを取得
-        $follow_each = $this->followers()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
-       //相互フォロー中のユーザを返す
-        return $follow_each;
-    }
+        // 9/25この記述いらない疑惑なので、コメントアウトした
+    //     public function follow_each(){
+    //     //ユーザがフォロー中のユーザを取得
+    //     $userIds = $this->follows()->pluck('users.id')->toArray();
+    //     //相互フォロー中のユーザを取得
+    //     $follow_each = $this->followers()->whereIn('users.id', $userIds)->pluck('users.id')->toArray();
+    //    //相互フォロー中のユーザを返す
+    //     return $follow_each;
+    // }
+        // ---ここまで---
 
 
         public function test($user_id){
             return (boolean) $this->follows()->where('followed_id', $user_id)->first();
 
         }
+
 
 
     // 8/14記述
@@ -85,5 +89,11 @@ class User extends Authenticatable
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['follows.id']);
     }
 
+    //  public function followList($user_id){
+    //         return (boolean) $this->follows()->where('followed_id', $user_id)->first();
+
+    //     }
+
+     
 
 }

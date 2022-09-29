@@ -121,4 +121,29 @@ class UsersController extends Controller
     }
 
 
+    // public function FollowList()
+    // {
+
+    //     User::query()->get();
+    //     // $users = $query->get();
+
+    //     return view('follows.followList');
+    // }
+
+    public function followList($id)
+    {
+        // dd($id);
+        // $user = User::find($id);
+        $follower = auth()->user();
+        // フォローしているか
+        $is_following = $follower->isFollowing($id);
+        $queryList = User::query();
+         if($is_following) {
+            // フォローしていれば返す
+             $follower->get($id);
+            return view('follow.followList');
+        }
+
+    }
+
 }

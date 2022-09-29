@@ -1,44 +1,47 @@
 @extends('layouts.login')
 
 @section('content')
-<form action="/top" method="post">
+{{-- <form action="/top" method="post"> --}}
 
-{{-- @foreach ($users as $user) --}}
     <section class="Folow-List">
         <h1>Folow List</h1>
 
-        {{-- フォローリストのアイコンの表示を絞るためにはforeachの実装が必要？？search.blade.phpを参考に --}}
-         {{-- @foreach ($all_users as $user) --}}
+        {{-- <section>
+            <div class="">{{ Auth::user()->images }}</div>
+        </section> --}}
 
-            {{-- <img src="{{ asset( 'storage/' . Auth::user()->images) }} " alt="icon"> --}}
-
-         @if(Auth::user()->test($user->id))
-        {{-- フォロー機能の実装の終了タグ --}}
-
-        <form action="{{ route('UnFollow', ['id' => $user->id]) }}" method="POST">
+  {{-- <form action="{{ route('follows.followList') }}" method="POST"> --}}
+    {{-- {{ csrf_field() }} --}}
+    {{-- @foreach ($is_following as $user) --}}
+    {{-- @foreach ($query as $followList) --}}
+         {{-- @if(Auth::user()->isFollowing($user->id)) --}}
+          {{-- <form action="{{ route('UnFollow') }}" method="POST"> --}}
+        {{-- <form action="" method="POST"> --}}
+            {{-- {{ csrf_field() }} --}}
+         {{-- @endif --}}
+      <form action="{{ route('follows.followList') }}" method="POST">
+      @foreach ($follower as $user)
+        @if(Auth::user()->test($user->id))
+          <form action="{{ route('UnFollow', ['id' => $user->id]) }}" method="POST">
         {{-- <form action="" method="POST"> --}}
             {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            {{-- <a href="{{route('UnFollow', $user)}}" class="search-follow"> --}}
-                <button type="submit">フォロー解除</button>
-            {{-- </a> --}}
-        </form>
-        @else
+            {{-- @if(Auth::user()->followList()) --}}
+            <img src="{{ asset( 'storage/' . Auth::user()->images) }} " alt="icon">
+            @endif
 
 
 
-    </div>
-    <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
-        {{ csrf_field() }}
-            <button type="submit">フォローする</button>
-        </form>
-        @endif
-    </div>
-   @endif
+    <div class="">
+        {{-- @if($user->id !== Auth::user()->id) --}}
+        <div class="">
+            {{-- <tr>
+                <img src="{{ asset('images/icon2.png') }}" alt="ユーザーアイコン">
+                <td><a href="{{ route('follows.followList', Auth::user()->query()->get()->images) }}"class="">
+                    {{-- {{ $followList->images }} --}}
+                    {{-- {{User::query()->get();}}
+                </td></a>
+            </tr> --}}
 
-             <p><img src="{{ asset( 'storage/' . Auth::user()->images) }}" alt="icon"></p>
-    </section>
-
-
-{{-- @endforeach --}}
-@endsection
+    {{-- @endforeach --}}
+    @endforeach
+    @endsection
