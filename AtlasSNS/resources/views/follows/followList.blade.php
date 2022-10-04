@@ -1,47 +1,44 @@
 @extends('layouts.login')
 
 @section('content')
-{{-- <form action="/top" method="post"> --}}
 
+<div class="container">
     <section class="Folow-List">
         <h1>Folow List</h1>
+            <div class="list-images">
+                @foreach ($followList as $user)
+                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon" width="50" height="50" class="list">
+                @endforeach
+            </div>
+    </section>
 
-        {{-- <section>
-            <div class="">{{ Auth::user()->images }}</div>
-        </section> --}}
-
-  {{-- <form action="{{ route('follows.followList') }}" method="POST"> --}}
-    {{-- {{ csrf_field() }} --}}
-    {{-- @foreach ($is_following as $user) --}}
-    {{-- @foreach ($query as $followList) --}}
-         {{-- @if(Auth::user()->isFollowing($user->id)) --}}
-          {{-- <form action="{{ route('UnFollow') }}" method="POST"> --}}
-        {{-- <form action="" method="POST"> --}}
-            {{-- {{ csrf_field() }} --}}
-         {{-- @endif --}}
-      <form action="{{ route('follows.followList') }}" method="POST">
-      @foreach ($follower as $user)
-        @if(Auth::user()->test($user->id))
-          <form action="{{ route('UnFollow', ['id' => $user->id]) }}" method="POST">
-        {{-- <form action="" method="POST"> --}}
-            {{ csrf_field() }}
-            {{-- @if(Auth::user()->followList()) --}}
-            <img src="{{ asset( 'storage/' . Auth::user()->images) }} " alt="icon">
-            @endif
+    <section class="Folow-posts">
+            <div class="list-images">
+                @foreach ($followList as $user)
+                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon" width="50" height="50" class="list">
 
 
+                <p>{{$user->post}}</p>
 
-    <div class="">
-        {{-- @if($user->id !== Auth::user()->id) --}}
-        <div class="">
-            {{-- <tr>
-                <img src="{{ asset('images/icon2.png') }}" alt="ユーザーアイコン">
-                <td><a href="{{ route('follows.followList', Auth::user()->query()->get()->images) }}"class="">
-                    {{-- {{ $followList->images }} --}}
-                    {{-- {{User::query()->get();}}
-                </td></a>
-            </tr> --}}
+                @endforeach
+            {{-- <div class="list-posts">
+                <p>{{$user->post}}</p> --}}
 
-    {{-- @endforeach --}}
-    @endforeach
-    @endsection
+        {{-- @foreach($posts as $post)
+            <div class="tweet-box">
+                <div class="tweet-wrapper">
+                    <tr>
+                        <td>{{ $post->user->username }}</td>
+                        <td>{{ $post->post }}</td>
+                    </div>
+                @endforeach --}}
+            </div>
+            <div class="post-list">
+                @foreach ($posts as $post)
+                <p>{{$post->post}}</p>
+                @endforeach
+            </div>
+    </section>
+
+</div>
+@endsection

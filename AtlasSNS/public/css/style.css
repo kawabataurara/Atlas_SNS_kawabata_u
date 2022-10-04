@@ -28,7 +28,11 @@ button {
     position: relative;
     /* padding: 10px; */
 }
-
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 #container {
     max-width: calc(100% - 20%);
 }
@@ -539,4 +543,14 @@ main {
     display: flex;
     align-items: center;
     margin-top: 20px;
+}
+
+.list-images{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1em;
+}
+
+.list {
+    padding-right: 1em;
 }

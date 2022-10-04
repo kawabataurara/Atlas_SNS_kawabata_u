@@ -3,14 +3,11 @@
 @section('content')
 
 
-
-<div>
-    {{-- <form action="/top" method="post"> --}}
+<div class="container">
   <form action="{{ route('users.search') }}" method="GET">
     <input type="text" name="keyword" value="{{ $keyword }}">
     <input type="submit" value="検索">
   </form>
-</div>
 
 
 @foreach ($users as $user)
@@ -18,11 +15,13 @@
     @if($user->id !== Auth::user()->id)
     <div class="search-list">
         <tr>
-            <img src="{{ asset('images/icon2.png') }}" alt="ユーザーアイコン">
+            <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon">
             <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">
                 {{ $user->username }}
             </td></a>
         </tr>
+    </div>
+    </div>
 
 
         {{-- 空だったら --}}
@@ -47,18 +46,15 @@
         @else
 
 
-
-    </div>
     <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
         {{ csrf_field() }}
             <button type="submit">フォローする</button>
         </form>
         @endif
-    </div>
    @endif
-
-</div>
 
 @endforeach
 
 @endsection
+
+</div>
