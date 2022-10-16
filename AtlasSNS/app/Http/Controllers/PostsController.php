@@ -14,10 +14,18 @@ class PostsController extends Controller
     public function index()
     {
 
-        $posts = Post::latest()->get();
-        return view('posts.index', compact('posts'));
+        // $posts = Post::latest()->get();
+        // return view('posts.index', compact('posts'));
+        $posts = Post::where('user_id', \Auth::user()->id)->get();
+        $followImages = Auth::user()->follows()->get();
+        $followList = Auth::user()->follows()->pluck('followed_id');
+        $followPost = Post::with('user')->whereIn('user_id', $followList)->latest()->get();
 
-        // return view('posts.index');
+        // $postsと$followPostを組み合わせて表示できないものか...？
+
+        return view('posts.index', compact('posts', 'followImages','followPost'));
+        // compact→変数を送れる
+
     }
 
     // Requestはpostリクエストを取得するためのもの
@@ -45,27 +53,6 @@ class PostsController extends Controller
         return redirect('index');
     }
 
-      public function show(){
-// フォローしているユーザーのidを取得
-//   $following_id = Auth::user()->follows()->pluck('following_id');
-//     //   dd($following_id);
-
-// // フォローしているユーザーのidを元に投稿内容を取得
-//   $posts = Post::with('user')->whereIn('id', $following_id)->get();
-//   return view('posts.index', compact('posts'));
-
-  $posts = Post::with('user')->whereIn('id', Auth::user()->follows()->pluck('following_id'))->orWhere('id', Auth::user()->id)->latest()->get();
-
-    return view('posts.index', compact('posts'));
-
-}
-//     public function show(){
-//  $post = Post::query()->whereIn('user_id', Auth::user()->follows()->pluck('following_id'))->latest()->get();
-//         return view('posts.index')->with([
-//             'post' => $post,
-//             ]);
-
-// }
 
     public function update(Request $request)
     {
@@ -79,15 +66,6 @@ class PostsController extends Controller
         return redirect('index');
 
     }
-
-//     public function show()
-//     {
-//         // Postモデル経由でpostsテーブルのレコードを取得
-//         $posts = Post::get();
-//         return view('posts.index', compact('posts'));
-
-// }
-
 
 
 }

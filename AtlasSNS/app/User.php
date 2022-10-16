@@ -27,9 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // public function follows() {
-    //     return $this->hasMany('\App\Follow');
-    // }
+    
 
     //このユーザがフォローしている人を取得
     public function follows()
@@ -94,6 +92,6 @@ class User extends Authenticatable
 
     //     }
 
-     
+
 
 }

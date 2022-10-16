@@ -2,47 +2,38 @@
 
 @section('content')
 
+<div class="container">
+    {{-- <section class="follow-list">
+            <div class="list-images">
+                @foreach ($followImages as $userImages)
+                <img src="{{ asset( 'storage/' . $userImages->images)}}" alt="" width="50" height="50" class="list-icon">
+                @endforeach
+            </div>
+        </section> --}}
 
-{!! Form::open(['url' => 'profile/{id}/update', 'method' => 'post', 'files' => true]) !!}
-
-    {!! Form::hidden('id', $auth->id) !!}
-
-
-        <div class="user-profile">
-            <p>{{Form::label('user-profile','ユーザー名')}}</p>
-            <p>{{ Form::text('username',$auth->username,['class' => 'input']) }}</p>
+    <section class="follow-posts">
+        @foreach ($followPost as $userImages)
+        <div class="profile">
+            <div class="list-images">
+                    <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="50" height="50" class="list-icon">
+            </div>
+            <div class="usersProfile">
+                <p>{{$userImages->user->username}}</p>
+                <p>{{$userImages->user->bio}}</p>
+            </div>
         </div>
-
-        <div class="user-profile">
-            <p>{{Form::label('E-mail','メールアドレス')}}</p>
-            <p>{{ Form::text('mail',$auth->mail,['class' => 'input']) }}</p>
+        <div class="bold-line"></div>
+        <div class="post-list">
+            <div class="list-images">
+                    <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="50" height="50" class="list-icon">
+            </div>
+            <div class="posts">
+                <p>{{$userImages->user->username}}</p>
+                <p>{{$userImages->post}}</p>
+                <p>{{$userImages->updated_at}}</p>
+            </div>
         </div>
-
-        <div class="user-profile">
-            <p>{{Form::label('password','パスワード')}}</p>
-            <p>{{ Form::password('password',null,['class' => 'input']) }}</p>
-        </div>
-
-        <div class="user-profile">
-        <p>{{Form::label('password_confirmation','パスワード確認')}}</p>
-        <p>{{ Form::password('password_confirmation',null,['class' => 'input']) }}</p>
-        </div>
-
-        <div class="user-profile">
-        <p>{{Form::label('bio','自己紹介')}}</p>
-        <p>{{ Form::text('bio',$auth->bio,['class' => 'input']) }}</p>
-        </div>
-
-        <div class="user-profile">
-            <p>{{Form::label('images','アイコン')}}</p>
-            <p>{{ Form::file('images',null,['class' => 'icon-images', 'name' => 'images' ]) }}</p>
-        </div>
-
-
-
-        {{Form::submit('更新', ['class'=>'btn btn-primary btn-block'])}}
- {!! Form::close() !!}
-
-
-
+    @endforeach
+    </section>
+</div>
 @endsection

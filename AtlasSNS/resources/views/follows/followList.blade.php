@@ -3,42 +3,33 @@
 @section('content')
 
 <div class="container">
-    <section class="Folow-List">
-        <h1>Folow List</h1>
+    <section class="follow-list">
+        <h1 class="title">follow List</h1>
             <div class="list-images">
-                @foreach ($followList as $user)
-                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon" width="50" height="50" class="list">
+                @foreach ($followImages as $userImages)
+                <a href="/profile/{id}" ><img src="{{ asset( 'storage/' . $userImages->images)}}" alt="" width="50" height="50" class="list-icon top-icon"></a>
                 @endforeach
             </div>
-    </section>
+        </section>
+        <div class="bold-line"></div>
 
-    <section class="Folow-posts">
+
+    <section class="follow-posts">
+        @foreach ($followPost as $userImages)
+        <div class="post-list">
             <div class="list-images">
-                @foreach ($followList as $user)
-                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon" width="50" height="50" class="list">
-
-
-                <p>{{$user->post}}</p>
-
-                @endforeach
-            {{-- <div class="list-posts">
-                <p>{{$user->post}}</p> --}}
-
-        {{-- @foreach($posts as $post)
-            <div class="tweet-box">
-                <div class="tweet-wrapper">
-                    <tr>
-                        <td>{{ $post->user->username }}</td>
-                        <td>{{ $post->post }}</td>
-                    </div>
-                @endforeach --}}
+                    <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="60" height="60" class="list-icon">
             </div>
-            <div class="post-list">
-                @foreach ($posts as $post)
-                <p>{{$post->post}}</p>
-                @endforeach
+            <div class="posts">
+                <div class="nameAndDate">
+                <p class="nameAndDate-child name-child">{{$userImages->user->username}}</p>
+                <p class="nameAndDate-child date-child">{{$userImages->updated_at}}</p>
+                </div>
+                <p class="post">{{$userImages->post}}</p>
             </div>
+        </div>
+        <div class="line bold-line"></div>
+    @endforeach
     </section>
-
 </div>
 @endsection

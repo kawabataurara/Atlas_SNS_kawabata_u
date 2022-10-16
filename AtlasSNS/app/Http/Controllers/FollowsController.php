@@ -18,25 +18,22 @@ class FollowsController extends Controller
 
     public function followList()
     {
-            $followList = Auth::user()->follows()->get();
-            // return view('follows.followList', compact('followList, posts'));
-            return view('follows.followList', compact('followList'));
+        $followImages = Auth::user()->follows()->get();
+        $followList = Auth::user()->follows()->pluck('followed_id');
+        $followPost = Post::with('user')->whereIn('user_id', $followList)->latest()->get();
 
-            // compact→変数を送れる
+        return view('follows.followList', compact('followImages','followPost'));
+        // compact→変数を送れる
         }
-    public function followPost()
+
+    public function followerList()
     {
-            $followList = Auth::user()->follows()->get();
-            $posts = Post::with('user')->whereIn('id', $followList)->get();
-            dd($posts);
-            // return view('follows.followList', compact('followList, posts'));
-            return view('follows.followList', compact('posts'));
+        $followerImages = Auth::user()->followers()->get();
+        $followerList = Auth::user()->followers()->pluck('following_id');
+        $followerPost = Post::with('user')->whereIn('user_id', $followerList)->latest()->get();
+
+        return view('follows.followerList', compact('followerImages','followerPost'));
 
             // compact→変数を送れる
         }
-
-        // public function followerList(){
-        //     return view('follows.followerList');
-        // }
-
     }

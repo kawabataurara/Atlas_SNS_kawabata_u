@@ -20,7 +20,7 @@ Route::get('/', function () {
 // Auth::routes();
 
 
-Route::get('index', 'PostsController@index');
+// Route::get('index', 'PostsController@index');
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
@@ -40,9 +40,10 @@ Route::group(["middleware" => "auth"], function() {
 
     Route::get('/logout','Auth\LoginController@logout');
 
-    Route::get('/profile','UsersController@profile');
+    Route::get('/profile/{id}','UsersController@profile');
+    Route::get('/editing','UsersController@editing');
     // Route::post('profile/{id}/file','UsersController@file')->name('profile.file');
-    Route::post('profile/{id}/update','UsersController@update');
+    // Route::post('profile/{id}/update','UsersController@update');
     // Route::post('profile/icon','UsersController@icon');
     // Route::post('profile/{id}/icon2','UsersController@icon2');
     Route::post('/sidebar', 'UsersController@sidebar');
@@ -50,7 +51,8 @@ Route::group(["middleware" => "auth"], function() {
     // Route::post('/profile','UsersController@profile');
     Route::get('/followerList','FollowsController@followerList');
     Route::get('/followList','FollowsController@followList');
-    Route::get('/followList','FollowsController@followPost');
+    Route::get('/followerList','FollowsController@followerList');
+    // Route::get('/followList','FollowsController@followPost');
 
     Route::get('/search','UsersController@search')
      ->name('users.search');
@@ -60,7 +62,7 @@ Route::group(["middleware" => "auth"], function() {
 
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');
-        Route::post('posts/index','PostsController@show');
+    // Route::post('posts/index','PostsController@show');
     Route::post('post/update', 'PostsController@update')->name('posts.index');
     Route::get('post/{id}/delete', 'PostsController@delete');
 

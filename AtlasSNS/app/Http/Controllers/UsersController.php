@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use App\User;
 use App\Follow;
+use App\Post;
 use Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,13 +25,13 @@ class UsersController extends Controller
 
     // }
 
-    public function profile()
+    public function editing()
     {
         $auth = Auth::user();
-        return view('users.profile',[ 'auth' => $auth ]);
+        return view('layouts.editing',[ 'auth' => $auth ]);
     }
 
-    protected function createProfile(array $data) {
+    protected function createediting(array $data) {
         return User::create([
             'bio' => $data['bio']
         ]);
@@ -64,7 +65,7 @@ class UsersController extends Controller
             'bio' => $bio,
         ]);
 
-        return redirect('profile');
+        return redirect('editing');
 
     }
 
@@ -120,30 +121,19 @@ class UsersController extends Controller
         }
     }
 
+    public function profile($id)
+    {
+        // $followImages = Auth::user()->follows($id)->get();
+        $followImages = Auth::user()->follows()->get();
+        // dd($followImages);
+        $followList = Auth::user()->follows()->pluck('followed_id')->first($id);
+        $followPost = Post::with('user')->whereIn('user_id', $followList)->latest()->get();
 
-    // public function FollowList()
-    // {
+        return view('users.profile', compact('followImages','followPost'));
 
-    //     User::query()->get();
-    //     // $users = $query->get();
+    }
 
-    //     return view('follows.followList');
-    // }
 
-    // public function followList($id)
-    // {
-    //     // dd($id);
-    //     // $user = User::find($id);
-    //     $follower = auth()->user();
-    //     // フォローしているか
-    //     $is_following = $follower->isFollowing($id);
-    //     $queryList = User::query();
-    //      if($is_following) {
-    //         // フォローしていれば返す
-    //          $follower->get($id);
-    //         return view('follow.followList');
-    //     }
 
-    // }
 
 }

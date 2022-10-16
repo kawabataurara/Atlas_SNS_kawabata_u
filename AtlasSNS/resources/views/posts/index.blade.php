@@ -7,7 +7,7 @@
 {{ csrf_field() }}
 
 <div class="tweet">
-    <img src="{{ asset('images/icon1.png') }}" class="tweet-icon" alt="atlas">
+    <img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="tweet-icon" alt="icon">
     <textarea class="tweet-text" name="post" placeholder="投稿内容を入力してください。"></textarea>
     <input type="image" class="tweet-btn" name="submit" src="{{ asset('images/post.png') }}" alt="投稿">
 </div>
@@ -21,8 +21,10 @@
     <div class="tweet-box">
         <div class="tweet-wrapper">
             <tr>
+                <td><img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="tweet-icon" alt="icon"></td>
                 <td>{{ $post->user->username }}</td>
                 <td>{{ $post->post }}</td>
+                <td>{{ $post->updated_at }}</td>
             </tr>
             <div class="content tweet-wrapper-btn">
                 <a class="js-modal-open" post="{{ $post->post }}" post_id="{{ $post->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集">
@@ -36,6 +38,23 @@
          </div>
     </div>
     @endforeach
+
+    @foreach ($followPost as $userImages)
+        <div class="post-list">
+            <div class="list-images">
+                    <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="60" height="60" class="list-icon">
+            </div>
+            <div class="posts">
+                <div class="nameAndDate">
+                <p class="nameAndDate-child name-child">{{$userImages->user->username}}</p>
+                <p class="nameAndDate-child date-child">{{$userImages->updated_at}}</p>
+                </div>
+                <p class="post">{{$userImages->post}}</p>
+            </div>
+        </div>
+        <div class="line bold-line"></div>
+    @endforeach
+
 
      <div class="modal js-modal">
         <div class="modal__bg js-modal-close"></div>
