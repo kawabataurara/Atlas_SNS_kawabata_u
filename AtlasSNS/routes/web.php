@@ -40,7 +40,9 @@ Route::group(["middleware" => "auth"], function() {
 
     Route::get('/logout','Auth\LoginController@logout');
 
-    Route::get('/profile/{id}','UsersController@profile');
+    Route::get('user/{id}/profile','UsersController@profile');
+    Route::post('user/{id}/profile', 'UsersController@follow')->name('profile.follow');
+    Route::delete('user/{id}/profile', 'UsersController@UnFollow')->name('profile.UnFollow');
     Route::get('/editing','UsersController@editing');
     // Route::post('profile/{id}/file','UsersController@file')->name('profile.file');
     // Route::post('profile/{id}/update','UsersController@update');
@@ -64,6 +66,7 @@ Route::group(["middleware" => "auth"], function() {
     Route::get('/follower-list','PostsController@index');
     // Route::post('posts/index','PostsController@show');
     Route::post('post/update', 'PostsController@update')->name('posts.index');
+    Route::post('editing/{id}/update','UsersController@update');
     Route::get('post/{id}/delete', 'PostsController@delete');
 
     // 8/11追加

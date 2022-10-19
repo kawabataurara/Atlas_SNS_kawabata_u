@@ -31,7 +31,7 @@ class UsersController extends Controller
         return view('layouts.editing',[ 'auth' => $auth ]);
     }
 
-    protected function createediting(array $data) {
+    protected function createProfile(array $data) {
         return User::create([
             'bio' => $data['bio']
         ]);
@@ -123,14 +123,10 @@ class UsersController extends Controller
 
     public function profile($id)
     {
-        // $followImages = Auth::user()->follows($id)->get();
-        $followImages = Auth::user()->follows()->get();
-        // dd($followImages);
-        $followList = Auth::user()->follows()->pluck('followed_id')->first($id);
-        $followPost = Post::with('user')->whereIn('user_id', $followList)->latest()->get();
+        $data = User::find($id);
+        $dataPost = Post::with('user')->whereIn('user_id', $data)->latest()->get();
 
-        return view('users.profile', compact('followImages','followPost'));
-
+        return view('users.profile', compact('data', 'dataPost'));
     }
 
 
