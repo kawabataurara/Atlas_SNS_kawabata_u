@@ -30,18 +30,12 @@
         @endif
 
         {{-- フォロー機能の実装 --}}
-        {{-- 多対多の記述？ --}}
 
      @if(Auth::user()->test($user->id))
-        {{-- フォロー機能の実装の終了タグ --}}
-
         <form action="{{ route('UnFollow', ['id' => $user->id]) }}" method="POST">
-        {{-- <form action="" method="POST"> --}}
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
-            {{-- <a href="{{route('UnFollow', $user)}}" class="search-follow"> --}}
                 <button type="submit">フォロー解除</button>
-            {{-- </a> --}}
         </form>
         @else
 

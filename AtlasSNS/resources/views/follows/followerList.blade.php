@@ -7,7 +7,7 @@
         <h1 class="title">follower List</h1>
             <div class="list-images">
                 @foreach ($followerImages as $userImages)
-                <img src="{{ asset( 'storage/' . $userImages->images)}}" alt="" width="50" height="50" class="list-icon top-icon">
+                 <a href="/user/{{$userImages->id}}/profile" ><img src="{{ asset( 'storage/' . $userImages->images)}}" alt="" width="50" height="50" class="list-icon top-icon"></a>
                 @endforeach
             </div>
         </section>

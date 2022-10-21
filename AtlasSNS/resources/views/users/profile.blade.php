@@ -15,23 +15,22 @@
             </div>
 
             {{-- フォローボタンの実装 --}}
-            @if(Auth::user()->followed_id === $data->id)
-
-        <form action="{{ route('profile.UnFollow') }}" method="POST">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
+        @if(Auth::user()->test($data->id))
+            <form action="{{ route('UnFollow', ['id' => $data->id]) }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
                 <button type="submit">フォロー解除</button>
-        </form>
-        @else
-
-        <form action="{{ route('profile.follow') }}" method="POST">
-        {{ csrf_field() }}
-            <button type="submit">フォローする</button>
-        </form>
+            </form>
+            @else
+            <form action="{{ route('follow', ['id' => $data->id]) }}" method="POST">
+                {{ csrf_field() }}
+                <button type="submit">フォローする</button>
+            </form>
         @endif
-
         </div>
+
         <div class="bold-line"></div>
+
         <div class="post-list">
             <div class="list-images">
                     <img src="{{ asset( 'storage/' . $data->images)}}" alt="" width="50" height="50" class="list-icon">
