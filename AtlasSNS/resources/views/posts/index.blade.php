@@ -18,14 +18,19 @@
         <p class="post-errors">{{$errors->first('post')}}</p>
         @endif
         @foreach($posts as $post)
-        <div class="tweet-box">
-            <div class="tweet-wrapper">
-                <tr>
-                    <td><img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="tweet-icon" alt="icon"></td>
-                    <td>{{ $post->user->username }}</td>
-                    <td>{{ $post->post }}</td>
-                    <td>{{ $post->updated_at }}</td>
-                </tr>
+        <section class="tweet-box">
+            <div class="list">
+                <div class="post-list">
+                <div class="list-images">
+                    <img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="tweet-icon" alt="icon">
+                </div>
+                <div class="posts">
+                    <p class="nameAndDate-child name-child">{{ $post->user->username }}</p>
+                    <p class="nameAndDate-child date-child">{{ $post->updated_at }}</p>
+                    <p class="post">{{ $post->post }}</p>
+                </div>
+                </div>
+
                 <div class="content tweet-wrapper-btn">
                     <a class="js-modal-open" post="{{ $post->post }}" post_id="{{ $post->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集">
                     </a>
@@ -36,13 +41,14 @@
                 <div class="follower-tweet">
                 </div>
             </div>
-        </div>
+            <div class="line bold-line"></div>
+        </section>
         @endforeach
 
         @foreach ($followPost as $userImages)
             <div class="post-list">
                 <div class="list-images">
-                        <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="60" height="60" class="list-icon">
+                        <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="50" height="50" class="list-icon">
                 </div>
                 <div class="posts">
                     <div class="nameAndDate">
@@ -52,7 +58,6 @@
                     <p class="post">{{$userImages->post}}</p>
                 </div>
             </div>
-            <div class="line bold-line"></div>
         @endforeach
 
 

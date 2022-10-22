@@ -74,11 +74,11 @@ class RegisterController extends Controller
             $data = $request->input();
             $validator = $this->validator($data);
 
-            // バリデーションが失敗したら
+        // バリデーションが失敗したら
         if ($validator->fails()) {
-        return redirect('/register')
-            ->withErrors($validator)
-            -> withInput();
+            return redirect('/register')
+                ->withErrors($validator)
+                -> withInput();
         }
         // 入力したものをデータベースに保存
             $this->create($data);
@@ -90,5 +90,6 @@ class RegisterController extends Controller
     public function added(){
         return view('auth.added');
     }
+
 
 }

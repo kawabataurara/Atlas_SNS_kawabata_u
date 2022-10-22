@@ -37,10 +37,7 @@
 
 <div class="login-next register-btn">
 <div class="login-position">
-{{-- <p class="login-btn">{{ Form::submit('') }}</p> --}}
     <div class="register-btn-img">{{ Form::image("images/registerbtn.png")}}</div>
-{{-- <img src="images/registerbtn.png"class="login-btn-img">
-<img src="images/next.png" class="next-img register-next"> --}}
 </div>
 </div>
 

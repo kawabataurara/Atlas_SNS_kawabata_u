@@ -13,17 +13,15 @@ class PostsController extends Controller
     //
     public function index()
     {
-
-        // $posts = Post::latest()->get();
-        // return view('posts.index', compact('posts'));
         $posts = Post::where('user_id', \Auth::user()->id)->get();
         $followImages = Auth::user()->follows()->get();
         $followList = Auth::user()->follows()->pluck('followed_id');
         $followPost = Post::with('user')->whereIn('user_id', $followList)->latest()->get();
+        // $allPosts = ([$posts, $followPost])->latest()->get();
+        // dd($allPosts);
+        // $postsと$followPostを組み合わせて$allPostsで表示できないものか...？
 
-        // $postsと$followPostを組み合わせて表示できないものか...？
-
-        return view('posts.index', compact('posts', 'followImages','followPost'));
+        return view('posts.index', compact('posts', 'followImages','followPost', 'allPosts'));
         // compact→変数を送れる
 
     }
@@ -50,7 +48,7 @@ class PostsController extends Controller
         ->where('id', $id)
         ->delete();
 
-        return redirect('index');
+        return redirect('top');
     }
 
 

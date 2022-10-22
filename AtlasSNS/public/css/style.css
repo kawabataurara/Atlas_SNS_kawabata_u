@@ -265,13 +265,13 @@ button {
     width: auto;
     height: 72px;
 }
-
+/* 
 .tweet-wrapper {
     display: flex;
     max-width: 800px;
     padding: 2rem;
     border-bottom: solid 1px #E6ECF0;
-}
+} */
 #trash-btn {
     max-width: 30px;
     float: right;
@@ -280,15 +280,6 @@ button {
     max-width: 30px;
     float: right;
 }
-
-
-
- /* .sp-menu #open.hide {
-     display: none;
- }
- .tweet-wrapper #open.hide {
-     display: none;
- } */
 
  input::-webkit-input-placeholder {
      padding-top: 0.2em;
@@ -633,4 +624,3 @@ font-size: 0.9rem;
     font-size: 1.2rem;
     font-weight: bold;
 }
-

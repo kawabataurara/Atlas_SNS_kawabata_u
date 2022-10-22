@@ -11,16 +11,28 @@
             <div class="user-profile">
                 <p>{{Form::label('user-profile','ユーザー名')}}</p>
                 <p>{{ Form::text('username',$auth->username,['class' => 'input']) }}</p>
+
+                @error('username')
+                    <li>{{$message}}</li>
+                @enderror
             </div>
 
             <div class="user-profile">
                 <p>{{Form::label('E-mail','メールアドレス')}}</p>
                 <p>{{ Form::text('mail',$auth->mail,['class' => 'input']) }}</p>
+
+                @error('mail')
+                    <li>{{$message}}</li>
+                @enderror
             </div>
 
             <div class="user-profile">
                 <p>{{Form::label('password','パスワード')}}</p>
                 <p>{{ Form::password('password',null,['class' => 'input']) }}</p>
+
+                @error('password')
+                    <li>{{$message}}</li>
+                @enderror
             </div>
 
             <div class="user-profile">
@@ -38,7 +50,7 @@
                 <p>{{ Form::file('images',null,['class' => 'icon-images', 'name' => 'images' ]) }}</p>
             </div>
 
-            
+
 
 
             {{Form::submit('更新', ['class'=>'btn btn-primary btn-block'])}}

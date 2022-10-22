@@ -31,18 +31,22 @@
 
         <div class="bold-line"></div>
 
+        <section class="follow-posts">
+            @foreach ($dataPost as $dataPost)
         <div class="post-list">
             <div class="list-images">
                     <img src="{{ asset( 'storage/' . $data->images)}}" alt="" width="50" height="50" class="list-icon">
             </div>
-            @foreach ($dataPost as $dataPost)
-                <div class="posts">
-                    <p>{{$dataPost->username}}</p>
-                    <p>{{$dataPost->post}}</p>
-                    <p>{{$dataPost->updated_at}}</p>
+
+            <div class="posts">
+                <p class="nameAndDate-child name-child">{{$dataPost->username}}</p>
+                <p class="nameAndDate-child date-child">{{$dataPost->updated_at}}</p>
+                <p class="post">{{$dataPost->post}}</p>
                 </div>
+            </div>
+                <div class="line bold-line"></div>
             @endforeach
-        </div>
+        </section>
     </section>
  </div>
 @endsection

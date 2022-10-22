@@ -15,15 +15,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
-    //  public function validator(array $data){
-    //     return Validator::make($data, [
-    //         'username' => 'required | string | min:2 | max:12',
-    //         'mail' => 'required | string | email | min:5 | max:40 | unique:users,mail',
-    //         'password' => 'required | string | min:8 |  max:20 | confirmed | alpha_num',
-    //         'password_confirmation' => 'required | same:password',
-    //     ]);
-
-    // }
 
     public function editing()
     {
@@ -37,6 +28,20 @@ class UsersController extends Controller
         ]);
     }
 
+
+    // バリデーションのメソッド
+
+    public function validator(array $data){
+        return Validator::make($data, [
+            'username' => 'required | string | min:2 | max:12',
+            'mail' => 'required | string | email | min:5 | max:40',
+            'password' => 'required | string | min:8 |  max:20 | confirmed | alpha_num',
+            // 'password_confirmation' => 'required | same:password',
+        ]);
+
+    }
+
+
     public function update(Request $request)
     {
         $id = $request->input('id');
@@ -44,6 +49,17 @@ class UsersController extends Controller
         $mail = $request->input('mail');
         $password = $request->input('password');
         $bio = $request->input('bio');
+
+        // バリデーションのメソッドにいく
+        $data = $request->input();
+        $validator = $this->validator($data);
+
+        // バリデーションが失敗したら
+        if ($validator->fails()) {
+            return redirect('editing')
+                ->withErrors($validator)
+                -> withInput();
+        }
 
         // もし画像があれば
         if($request->hasFile('images')){
