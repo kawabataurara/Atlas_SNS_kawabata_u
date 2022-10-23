@@ -15,20 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/home', 'HomeController@index')->name('home');
-
-// Auth::routes();
-
-
-// Route::get('index', 'PostsController@index');
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 Route::get('/register', 'Auth\RegisterController@register');//表示する
 Route::post('/register', 'Auth\RegisterController@register');//データ送信
+// Route::get('/added', 'Auth\RegisterController@added');
 Route::get('/added', 'Auth\RegisterController@added');
-Route::post('/added', 'Auth\RegisterController@added');
+Route::post('/added', 'Auth\RegisterController@register');
 
 //ログイン中のページ
 Route::group(["middleware" => "auth"], function() {
@@ -56,7 +51,6 @@ Route::group(["middleware" => "auth"], function() {
 
     Route::get('/follow-list','PostsController@index');
     Route::get('/follower-list','PostsController@index');
-    // Route::post('posts/index','PostsController@show');
     Route::post('post/update', 'PostsController@update')->name('posts.index');
     Route::get('post/{id}/delete', 'PostsController@delete');
 

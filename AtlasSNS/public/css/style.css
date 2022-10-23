@@ -232,6 +232,16 @@ button {
     margin-top: 10px;
 }
 
+/* プロフィール編集画面 */
+
+.editing-all {
+    display: flex;
+}
+
+.editing-all .editing-user-icon {
+    filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.25));
+}
+
 .user-profile {
     display: flex;
     align-items: center;
@@ -265,7 +275,7 @@ button {
     width: auto;
     height: 72px;
 }
-/* 
+/*
 .tweet-wrapper {
     display: flex;
     max-width: 800px;

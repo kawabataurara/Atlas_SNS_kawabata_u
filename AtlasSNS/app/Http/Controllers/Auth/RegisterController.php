@@ -81,8 +81,10 @@ class RegisterController extends Controller
                 -> withInput();
         }
         // 入力したものをデータベースに保存
-            $this->create($data);
-            return redirect('added');
+            $username = $this->create($data);
+            // dd($username);
+            return redirect('added', compact('username'));
+
         }
         return view('auth.register');
     }

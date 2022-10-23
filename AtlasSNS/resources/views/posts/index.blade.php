@@ -17,47 +17,34 @@
         @if($errors->first('post'))
         <p class="post-errors">{{$errors->first('post')}}</p>
         @endif
-        @foreach($posts as $post)
+        @foreach($followPost as $followData)
         <section class="tweet-box">
             <div class="list">
                 <div class="post-list">
                 <div class="list-images">
-                    <img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="tweet-icon" alt="icon">
+                    <img src="{{ asset( 'storage/' . $followData->user->images) }}" class="tweet-icon" alt="icon">
                 </div>
                 <div class="posts">
-                    <p class="nameAndDate-child name-child">{{ $post->user->username }}</p>
-                    <p class="nameAndDate-child date-child">{{ $post->updated_at }}</p>
-                    <p class="post">{{ $post->post }}</p>
+                    <p class="nameAndDate-child name-child">{{ $followData->user->username }}</p>
+                    <p class="nameAndDate-child date-child">{{ $followData->updated_at }}</p>
+                    <p class="post">{{ $followData->post }}</p>
                 </div>
                 </div>
+                @if ($followData->user_id === Auth::user()->id)
+                    <div class="content tweet-wrapper-btn">
+                        <a class="js-modal-open" post="{{ $followData->post }}" post_id="{{ $followData->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集">
+                        </a>
+                            {{-- ララベル課題参考箇所 --}}
+                        <td><a href="/post/{{$followData->id}}/delete"><img src="{{ asset('images/trash-h.png') }}" class="trash-btn" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')" alt="削除"></a></td>
+                    </div>
+                @endif
 
-                <div class="content tweet-wrapper-btn">
-                    <a class="js-modal-open" post="{{ $post->post }}" post_id="{{ $post->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集">
-                    </a>
-                        {{-- ララベル課題参考箇所 --}}
-                    <td><a href="/post/{{$post->id}}/delete"><img src="{{ asset('images/trash-h.png') }}" class="trash-btn" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')" alt="削除"></a></td>
-                </div>
 
                 <div class="follower-tweet">
                 </div>
             </div>
             <div class="line bold-line"></div>
         </section>
-        @endforeach
-
-        @foreach ($followPost as $userImages)
-            <div class="post-list">
-                <div class="list-images">
-                        <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="50" height="50" class="list-icon">
-                </div>
-                <div class="posts">
-                    <div class="nameAndDate">
-                    <p class="nameAndDate-child name-child">{{$userImages->user->username}}</p>
-                    <p class="nameAndDate-child date-child">{{$userImages->updated_at}}</p>
-                    </div>
-                    <p class="post">{{$userImages->post}}</p>
-                </div>
-            </div>
         @endforeach
 
 
