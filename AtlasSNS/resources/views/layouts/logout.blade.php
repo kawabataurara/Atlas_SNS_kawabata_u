@@ -28,7 +28,7 @@
         <div><img src="images/angel.png" class="angel up-down"></div>
 
         <header>
-            <h1><img src="images/atlas.png" class="logout-atlas"></h1>
+            <h1><a href="/login"><img src="images/atlas.png" class="logout-atlas"></h1></a>
             {{-- <p>Social Network Service</p> --}}
         </header>
     </div>

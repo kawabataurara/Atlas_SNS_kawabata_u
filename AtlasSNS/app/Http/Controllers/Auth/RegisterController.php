@@ -82,8 +82,8 @@ class RegisterController extends Controller
         }
         // 入力したものをデータベースに保存
             $username = $this->create($data);
-            // dd($username);
-            return redirect('added', compact('username'));
+            $user = $request->get('username');
+            return redirect('added')->with('username', $user);
 
         }
         return view('auth.register');

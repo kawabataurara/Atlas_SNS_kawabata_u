@@ -18,33 +18,41 @@
         <p class="post-errors">{{$errors->first('post')}}</p>
         @endif
         @foreach($followPost as $followData)
-        <section class="tweet-box">
-            <div class="list">
-                <div class="post-list">
-                <div class="list-images">
-                    <img src="{{ asset( 'storage/' . $followData->user->images) }}" class="tweet-icon" alt="icon">
+        <main class="main">
+            <div class="list-images">
+                    <img src="{{ asset( 'storage/' . $followData->user->images) }}" class="tweet-icon listi-con" alt="icon">
                 </div>
+        <section class="tweet-list">
+            {{-- <div class="list"> --}}
+
+                <div class="post-list">
+                {{-- <div class="list-images">
+                    <img src="{{ asset( 'storage/' . $followData->user->images) }}" class="tweet-icon listi-con" alt="icon">
+                </div> --}}
                 <div class="posts">
+                    <div class="posts-top">
                     <p class="nameAndDate-child name-child">{{ $followData->user->username }}</p>
-                    <p class="nameAndDate-child date-child">{{ $followData->updated_at }}</p>
-                    <p class="post">{{ $followData->post }}</p>
+                    <p class="nameAndDate-child date">{{ $followData->updated_at }}</p>
+                    </div>
+                    <div class="post">{{ $followData->post }}</div>
                 </div>
                 </div>
                 @if ($followData->user_id === Auth::user()->id)
-                    <div class="content tweet-wrapper-btn">
-                        <a class="js-modal-open" post="{{ $followData->post }}" post_id="{{ $followData->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集">
+                    <div class="tweet-wrapper-btn">
+                        <div><a class="js-modal-open" post="{{ $followData->post }}" post_id="{{ $followData->id }}" ><img src="{{ asset('images/edit.png') }}" alt="編集"></div>
                         </a>
                             {{-- ララベル課題参考箇所 --}}
-                        <td><a href="/post/{{$followData->id}}/delete"><img src="{{ asset('images/trash-h.png') }}" class="trash-btn" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')" alt="削除"></a></td>
+                        <div><a class= "js-modal-open" href="/post/{{$followData->id}}/delete"><img src="{{ asset('images/trash-h.png') }}" class="trash-btn " onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')" alt="削除"></a></div>
                     </div>
                 @endif
 
 
                 <div class="follower-tweet">
                 </div>
-            </div>
-            <div class="line bold-line"></div>
+            {{-- </div> --}}
         </section>
+        {{-- <div class="line bold-line"></div> --}}
+        </main>
         @endforeach
 
 
@@ -57,9 +65,9 @@
                         {{-- <input type="hidden" name="id" class="modal_id" value="{{$post->id}}"> --}}
                         <input type="hidden" name="id" class="modal_id">
                         <div class="btn-zone">
-                        <input type="image" src="{{ asset('images/edit.png') }}" class="edit-btn2 modal_id" value="更新" alt="更新">
+                        <input type="image" src="{{ asset('images/edit.png') }}" class="edit-btn modal_id" value="更新" alt="更新">
                     </form>
-                    <a class="js-modal-close close-btn" href="">閉じる</a>
+                    <a class="js-modal-close close-btn " href="">閉じる</a>
                         </div>
                 </div>
             </div>

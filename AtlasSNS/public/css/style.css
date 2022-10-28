@@ -87,32 +87,8 @@ button {
     float: left;
 }
 /* メニューボタン */
-/* .dli-chevron-down {
-    display: inline-block;
-    vertical-align: middle;
-    color: #333;
-    line-height: 1;
-    width: 1em;
-    height: 1em;
-    border: 0.1em solid currentColor;
-    border-left: 0;
-    border-bottom: 0;
-    box-sizing: border-box;
-    transform: translateY(-25%) rotate(135deg);
-} */
-/* .dli-chevron-up {
-    display: inline-block;
-    vertical-align: middle;
-    color: #333;
-    line-height: 1;
-    width: 1em;
-    height: 1em;
-    border: 0.1em solid currentColor;
-    border-left: 0;
-    border-bottom: 0;
-    box-sizing: border-box;
-    transform: translateY(25%) rotate(-135deg);
-} */
+
+
 
 .dli-chevron-down  {
     cursor: pointer;
@@ -122,19 +98,6 @@ button {
     cursor: pointer;
 }
 
-/* .dli-chevron-down:active {
-    display: inline-block;
-        vertical-align: middle;
-        color: #333;
-        line-height: 1;
-        width: 1em;
-        height: 1em;
-        border: 0.1em solid currentColor;
-        border-left: 0;
-        border-bottom: 0;
-        box-sizing: border-box;
-        transform: translateY(-25%) rotate(45deg);
-} */
 
 .overlay {
     z-index: 4;
@@ -146,14 +109,9 @@ button {
     text-align: center;
     opacity: 0;
     pointer-events: none;
-    /* transition: opacity .6s; */
 }
 
 .edit {
-    /* z-index: 4;
-    position: fixed;
-    top: 60px;
-    right: 0; */
     width: 400px;
     background-color: #fff;
     text-align: center;
@@ -161,17 +119,7 @@ button {
     pointer-events: none;
     transition: opacity .6s;
 }
-/* .dli-chevron-up {
-    top: 0;
-} */
 
-/* .overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-    width: 248px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-
-} */
 .edit.show {
     opacity: 1;
     pointer-events: auto;
@@ -248,7 +196,7 @@ button {
 }
 
 
-/* tweet */
+/* 投稿画面 */
 
 .tweet {
     display: flex;
@@ -256,13 +204,36 @@ button {
     padding-top: 40px;
     border-bottom: solid 4px #E6ECF0;
 }
+
 .tweet-icon {
     margin: auto 10px;
     width: auto;
     height: 50px;
     filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.25));
 }
+.list-images {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
+/* .list-icon {
+    position: absolute;
+} */
+.main {
+    height: 8rem;
+    border-bottom: solid 1px rgb(239, 243, 244);
+    position: relative;
+}
+.tweet-list .posts {
+    padding-left: 70px;
+    width: 100%;
+}
+.tweet-list .post-list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
 .tweet-text {
     width: 100%;
     border: none;
@@ -270,25 +241,21 @@ button {
     outline: none;
 }
 
+.posts .posts-top {
+    display: flex;
+    justify-content: space-between;
+}
+.posts .posts-top .date {
+    color: rgb(83, 100, 113);
+    font-size: 0.9rem;
+}
+.post {
+    white-space: pre-wrap;
+}
 .tweet-btn {
     margin: auto 0 0 0;
     width: auto;
     height: 72px;
-}
-/*
-.tweet-wrapper {
-    display: flex;
-    max-width: 800px;
-    padding: 2rem;
-    border-bottom: solid 1px #E6ECF0;
-} */
-#trash-btn {
-    max-width: 30px;
-    float: right;
-}
-#edi-btn {
-    max-width: 30px;
-    float: right;
 }
 
  input::-webkit-input-placeholder {
@@ -310,44 +277,31 @@ button {
  }
 
  .tweet-wrapper-btn {
-    margin-right: 0;
-    margin-left: 0;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-right: 16px;
  }
 
-.edit-btn2 {
-    display: block;
-    height: 40px;
-    max-width: 40px;
-    cursor: pointer;
-    width: 200px;
-    text-align: right;
-    margin: 10px 0 10px auto;
-}
- .edit-btn, .trash-btn {
-    height: 40px;
-    max-width: 40px;
-    cursor: pointer;
-    width: 200px;
-    text-align: center;
-    margin: 16px auto 0;
- }
 
- .trash-btn:hover {
-    transform: rotate(20deg);
- }
-
- .js-modal-open img {
+ .tweet-wrapper-btn .js-modal-open img {
     height: 40px;
     max-width: 40px;
     cursor: pointer;
     width: 200px;
     text-align: center;
-    margin: 16px auto 0;
  }
 
- .js-modal-open img:hover {
+ .tweet-wrapper-btn .js-modal-open img:hover {
     transform: rotate(20deg);
  }
+ .tweet-wrapper-btn div:first-child {
+    margin-right: 0.3rem;
+ }
+
+
 
  #mask {
      position: fixed;
@@ -472,20 +426,6 @@ main {
     padding: 0 16px;
 }
 
-/* .overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.95);
-    text-align: center;
-    padding: 64px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .6s;
-} */
-
 .overlay.show {
     height: 400px;
     top: 60px;
@@ -547,7 +487,7 @@ main {
 .follow-list, .follower-list {
 display: flex;
 align-items: center;
-margin: 20px 0 36px;
+margin: 24px 0;
 }
 
 .follow-list .title, .follower-list .title {
@@ -601,7 +541,7 @@ margin: 20px 0 36px;
 .follow-posts .name-child {
 font-weight: bold;
 }
-.follow-posts .date-child {
+.date-child {
 color: rgb(83, 100, 113);
 position: absolute;
 right: 28%;
