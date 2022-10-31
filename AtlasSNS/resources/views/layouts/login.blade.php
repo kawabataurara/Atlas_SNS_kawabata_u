@@ -32,23 +32,25 @@
                 <div class="header-list">
                     <div class="user-profile">
                     <p class="username-box">{{ Auth::user()->username }}さん</p>
-                    <img src="{{ asset( 'storage/' . Auth::user()->images) }} " alt="icon">
+                    <img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="header-icon" alt="icon">
+                    <div class="menu">
+                        <div class="sp-menu">
+                            <span class="menu" id="open">
+                                <img src="{{ asset('images/header-menu.png') }}" class="header-menu" alt="">
+                            </span>
+                        </div>
                     </div>
-                        <div class="menu">
-                            <div class="sp-menu">
-                                <span class="material-symbols-outlined" id="open">expand_more</span>
-                             </div>
                  </div>
                   </div>
                    </div>
 
                             <div class="overlay">
-                                    <span class="material-icons" id="close">close</span>
+                                    <span class="" id="close">close</span>
                                             <nav>
                                                 <ul>
-                                                    <li><a href="/top">ホーム</a></li>
-                                                    <li><a href="/editing">プロフィール編集</a></li>
-                                                    <li><a href="/logout">ログアウト</a></li>
+                                                    <a href="/top"><li>ホーム</li></a>
+                                                   <a href="/editing"><li>プロフィール編集</li></a>
+                                                    <a href="/logout"><li>ログアウト</li></a>
                                                 </ul>
                                             </nav>
                                         </div>

@@ -4,24 +4,28 @@
 
 
 <div class="container">
-  <form action="{{ route('users.search') }}" method="GET">
-    <input type="text" name="keyword" value="{{ $keyword }}">
-    <input type="submit" value="検索">
-  </form>
+    <main class="search-all">
+        <section class="user-search">
+            <form action="{{ route('users.search') }}" method="GET">
+                <input type="text" name="keyword" value="{{ $keyword }}">
+                <input type="submit" value="検索">
+            </form>
+        </section>
 
 
-@foreach ($users as $user)
-   <div class="user-list-box">
-    @if($user->id !== Auth::user()->id)
-    <div class="search-list">
-        <tr>
-            <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon">
-            <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">
-                {{ $user->username }}
-            </td></a>
-        </tr>
-    </div>
-    </div>
+        @foreach ($users as $user)
+        <section class="search">
+    <div class="user-list-box">
+        @if($user->id !== Auth::user()->id)
+        <div class="search-list tweet-icon">
+            <tr>
+                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon">
+                <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">
+                    {{ $user->username }}
+                </td></a>
+            </tr>
+        </div>
+        </div>
 
 
         {{-- 空だったら --}}
@@ -35,20 +39,22 @@
         <form action="{{ route('UnFollow', ['id' => $user->id]) }}" method="POST">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
-                <button type="submit">フォロー解除</button>
+            <button type="submit" class="login-next">フォロー解除</button>
         </form>
         @else
 
 
-    <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
-        {{ csrf_field() }}
-            <button type="submit">フォローする</button>
-        </form>
-        @endif
-   @endif
+        <form action="{{ route('follow', ['id' => $user->id]) }}" method="POST">
+            {{ csrf_field() }}
+                <button type="submit" class="login-next">フォローする</button>
+            </form>
+            @endif
+    @endif
 
-@endforeach
+    </section>
+    @endforeach
 
-@endsection
 
+    @endsection
+</main>
 </div>

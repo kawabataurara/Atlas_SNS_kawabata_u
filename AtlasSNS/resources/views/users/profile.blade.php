@@ -19,12 +19,12 @@
             <form action="{{ route('UnFollow', ['id' => $data->id]) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <button type="submit">フォロー解除</button>
+                <button type="submit" class="login-next">フォロー解除</button>
             </form>
             @else
             <form action="{{ route('follow', ['id' => $data->id]) }}" method="POST">
                 {{ csrf_field() }}
-                <button type="submit">フォローする</button>
+                <button type="submit" class="login-next">フォローする</button>
             </form>
         @endif
         </div>

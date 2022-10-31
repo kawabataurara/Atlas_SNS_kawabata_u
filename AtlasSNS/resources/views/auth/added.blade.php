@@ -13,9 +13,12 @@
             <p>ユーザー登録が完了しました。</p>
             <p>早速ログインをしてみましょう。</p>
         </div>
-        </div>
-  <p class="btn"><a href="/login">ログイン画面へ</a></p>
+    </div>
+
 </div>
 </div>
+ <div class="login-next">
+    <div class="login-btn-img"><a href="/login">{{ Form::image("images/loginbtn.png")}}</a>
+    </div>
 
 @endsection

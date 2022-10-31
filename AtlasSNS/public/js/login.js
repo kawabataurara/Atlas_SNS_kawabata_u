@@ -27,33 +27,6 @@
     });
 
 
-    // let open = document.getElementById('open');
-    // let close = document.getElementById('close');
-    // const overlay = document.querySelector('.overlay');
-    // const edit = document.querySelector('.edit');
-
-
-    // open.addEventListener('click', () => {
-    //     overlay.classList.add('show');
-    //     open.classList.add('hide');
-    // });
-    // close.addEventListener('click', () => {
-    //     overlay.classList.remove('show');
-    //     open.classList.remove('hide');
-    // });
-
-
-    // open.addEventListener('click', () => {
-    //     edit.classList.add('show');
-    //     open.classList.add('hide');
-    // });
-    // close.addEventListener('click', () => {
-    //     edit.classList.remove('show');
-    //     open.classList.remove('hide');
-    // });
-
-
-
 }
 
 
@@ -90,4 +63,15 @@ $(function () {
             return false;
         });
 
+
+    // テキストエリアを内容に合わせて高さを調節する
+    $('#textarea').on('input', function () {
+        if ($(this).outerHeight() > this.scrollHeight) {
+            $(this).height(1)
+        }
+        while ($(this).outerHeight() < this.scrollHeight) {
+            $(this).height($(this).height() + 1)
+        }
     });
+
+});

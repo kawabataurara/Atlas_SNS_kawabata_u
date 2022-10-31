@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
 
 *, *:before, *:after {
     -webkit-box-sizing: border-box;
@@ -7,7 +8,7 @@
 
 body{
     margin: 0;
-    font-family: "Segoe UI","Meiryo", "system-ui", "-apple-system", "BlinkMacSystemFont", sans-serif;
+    font-family: "M PLUS 1p", "Segoe UI", "Meiryo", "system-ui", "-apple-system", "BlinkMacSystemFont", sans-serif;
     color: #36303F;
     font-size: 16px;
 }
@@ -52,7 +53,8 @@ button {
     display: flex;
     align-items: center;
     height: 70px;
-    background: #0CEBEB;
+    background: #00AFE2;
+    filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.25));
 }
 
 .head-design {
@@ -61,7 +63,7 @@ button {
 
 .logo-img img{
     display: block;
-    width: 65px;
+    width: 80px;
     padding-left: 20px;
 }
 
@@ -70,20 +72,29 @@ button {
     display: flex;
     margin: 0 0 0 auto;
 }
-
-/*
-.user-profile img {
-    width: 20%;
-
-} */
+ .header-list .user-profile {
+    margin: 0;
+}
+ .header-list .header-icon {
+    margin: 0 10px;
+}
+ .header-list .header-icon {
+    height: 40px;
+}
+ .header-list .header-menu {
+    height: 20px;
+}
 
 .username-box {
     float: left;
+    font-weight: bold;
+    color: #fff;
 }
 
 .user-profile img {
     display: block;
-    width: 30px;
+    /* height: 30px; */
+    width: auto;
     float: left;
 }
 /* メニューボタン */
@@ -105,10 +116,12 @@ button {
     top: 60px;
     right: 0;
     width: 200px;
-    background-color: #fff;
     text-align: center;
     opacity: 0;
     pointer-events: none;
+}
+.active {
+    transform: translateX(0);
 }
 
 .edit {
@@ -129,18 +142,28 @@ button {
 }
 
 .overlay li {
+    color: #000;
     display: block;
-    padding: 16px;
-    background-color: #fff;
+    padding: 24px;
+    font-weight: bold;
+    border: 2px solid #000;
+    width: 20%;
+    text-align: center;
+    margin: 6% auto;
+    border-radius: 4px;
+    background: #fff;
+    filter: drop-shadow(-2px 10px 3px rgb(3, 60, 60, 0.15));
+}
+.overlay li:hover {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    transition: 0.3s;
 }
 
-.overlay li:nth-child(2) {
-    background: #186AC9;
-    color: #fff;
-}
-
-.overlay li:nth-child(2) a {
-    color: #fff;
+.overlay li a {
+    color: #36303F;
+    text-align: right;
 }
 
 
@@ -149,15 +172,16 @@ button {
 #side-bar {
     z-index: 1;
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 0;
     width: 20%;
-    height: 100%;
-    border-left: 1px solid #727272;
+    height: 1000px;
+    border-left: 3px solid rgb(239, 243, 244);;
     padding: 2rem;
     background: #fff;
 
 }
+
 .follow {
     display: flex;
     justify-content: space-between;
@@ -165,34 +189,139 @@ button {
 
 .follow-btn {
     display: block;
-    font-size: 12px;
-    color: #fff;
-    background: #a8ddd9;
+    /* font-size: 12px; */
+    color: #000;
+    /* background: #a8ddd9; */
     padding: 0.6rem;
-    width: 70%;
+    width: 100%;
     margin: 10px 0 10px auto;
     text-align: center;
-    border-radius: 3px;
+    padding-bottom: 5px;
+    position: relative;
 }
+
+
+.follow-btn::before {
+    background: rgb(239, 243, 244);
+    content: '';
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    transform-origin: right top;
+    transform: scale(0, 1);
+    transition: transform .3s;
+}
+
+.follow-btn:hover::before {
+    transform-origin: left top;
+    transform: scale(1, 1);
+}
+
+.follow-btn .totall {
+    font-weight: bold;
+    margin-right: 6px;
+}
+.follow-btn .totall-after {
+   color: gray;
+   font-size: 0.9rem;
+}
+
 
 .confirm p {
     display: block;
     margin-top: 10px;
 }
+.confirm .user-name {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.login-next {
+    text-align: center;
+    font-weight: bold;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 4px;
+    width: 100%;
+    margin: 30px auto;
+    color: #000;
+    padding: 1rem;
+}
+.login-next:hover {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    transition: 0.3s;
+}
+
 
 /* プロフィール編集画面 */
 
 .editing-all {
-    display: flex;
+    width: 60%;
+   margin: 0 auto;
 }
 
 .editing-all .editing-user-icon {
     filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.25));
+    text-align: center;
+    margin: 2rem 0;
 }
 
+.editing-all button{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+.editing-all button input{
+    background-color: #fff;
+    font-weight: bold;
+    color: #000;
+    font-size: 1rem;
+    border: 2px solid #000;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 2rem;
+    width: 20rem;
+}
+.editing-all button input:hover{
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.editing-list {
+    width: 100%;
+}
+.editing-list .error {
+    color: red;
+    width: 20rem;
+    margin-right: 0;
+    margin-left: auto;
+    margin-top: 16px;
+    text-align: center;
+}
+.editing-list .editing-input input {
+    padding: 1rem;
+    width: 20rem;
+}
+.editing-list .profile-editing-icon {
+    width: 20rem;
+}
 .user-profile {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+.user-profile p:nth-child(1) {
+    font-weight: bold;
 }
 
 
@@ -201,29 +330,38 @@ button {
 .tweet {
     display: flex;
     justify-content: center;
-    padding-top: 40px;
-    border-bottom: solid 4px #E6ECF0;
+    padding: 16px;
+    height: 120px;
+    margin-top: 30px;
+    border-bottom: solid 3px rgb(239, 243, 244);
+    position: relative;
+}
+.tweet .top-icon {
+    height: 70px;
+    filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.2));
 }
 
 .tweet-icon {
     margin: auto 10px;
     width: auto;
     height: 50px;
-    filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.25));
+    filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.2));
 }
-.list-images {
+.top-list-images {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0%;
+    padding-top: 10px;
+    transform: translateY(-0%);
 }
 
 /* .list-icon {
     position: absolute;
 } */
 .main {
-    height: 8rem;
+    min-height: 8rem;
     border-bottom: solid 1px rgb(239, 243, 244);
     position: relative;
+    padding: 16px;
 }
 .tweet-list .posts {
     padding-left: 70px;
@@ -235,6 +373,7 @@ button {
     width: 100%;
 }
 .tweet-text {
+    padding: 0 1rem;
     width: 100%;
     border: none;
     resize: none;
@@ -244,6 +383,10 @@ button {
 .posts .posts-top {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 4px;
+}
+.posts .posts-top .name-child {
+    font-weight: bold;
 }
 .posts .posts-top .date {
     color: rgb(83, 100, 113);
@@ -253,9 +396,26 @@ button {
     white-space: pre-wrap;
 }
 .tweet-btn {
-    margin: auto 0 0 0;
-    width: auto;
-    height: 72px;
+        text-align: center;
+        font-weight: bold;
+        background: #00AFE2;
+        border: 2px solid #00AFE2;
+        border-radius: 4px;
+        width: 10%;
+        height: 40px;
+        color: #fff;
+        padding: 0 1rem;
+        margin-bottom: 0;
+        margin-top: auto;
+}
+.tweet-btn:hover {
+        background: #fff;
+        border: none;
+        border: 2px solid #00AFE2;
+        color: #00AFE2;
+        cursor: pointer;
+        transition: 0.3s;
+
 }
 
  input::-webkit-input-placeholder {
@@ -281,7 +441,7 @@ button {
     justify-content: flex-end;
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 10px;
     padding-right: 16px;
  }
 
@@ -292,9 +452,21 @@ button {
     cursor: pointer;
     width: 200px;
     text-align: center;
+    border-radius: 4px;
+ }
+ .tweet-wrapper-btn .delete img {
+    height: 40px;
+    max-width: 40px;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    border-radius: 4px;
  }
 
  .tweet-wrapper-btn .js-modal-open img:hover {
+    transform: rotate(20deg);
+ }
+ .tweet-wrapper-btn .delete img:hover {
     transform: rotate(20deg);
  }
  .tweet-wrapper-btn div:first-child {
@@ -363,6 +535,7 @@ button {
 }
 
 .modal__content {
+    border-radius: 4px;
     z-index: 5;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
     background: #fff;
@@ -373,6 +546,13 @@ button {
     transform: translate(-50%, -50%);
     width: 40%;
 }
+.modal__content textarea {
+    margin: 0 auto;
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+}
 
 .btn-zone {
     display: flex;
@@ -380,27 +560,63 @@ button {
     flex-direction: row-reverse;
     padding-top: 20px;
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
+}
+/* .btn-zone .close {
+    padding: 2px;
+    margin: 2px;
+}
+.btn-zone .close:hover {
+   background-color: #000;
+   color: #fff;
+} */
+.btn-zone .edit-btn {
+    width: 10%;
+    border-radius: 4px;
+}
+.btn-zone .edit-btn:hover {
+    transform: rotate(20deg);
 }
 
-.close-btn {
-        display: block;
-        background: #ADC0B7;
-        color: #fff;
-        padding: 8px;
-        border-radius: 3px;
-        font-size: 14px;
+.btn-zone .close-btn {
+    position: absolute;
+    top: 8%;
+    left: 3%;
+}
+.dli-close {
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+    line-height: 1;
+    width: 1em;
+    height: 0.1em;
+    background: currentColor;
+    border-radius: 0.1em;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.dli-close::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
 }
 
 .post-errors {
-    display: block;
-    padding: 12px 15px;
-    width: 300px;
-    text-align: center;
-    background: #ADC0B7;
-    box-shadow: 0 3px 5px rgb(0 0 0 / 22%);
-    color: #fff;
-    font-weight: bold;
+        font-size: 14px;
+            display: block;
+            /* right: 240px; */
+            padding: 8px 16px;
+            color: red;
+            text-align: right;
+            margin-right: 0;
+            margin-left: auto;
 }
 
 
@@ -411,6 +627,9 @@ button {
 .sp-menu {
     margin-left: auto;
 }
+.sp-menu:hover {
+    filter: drop-shadow(0 0 6px rgb(255, 255, 255, 0.6));
+}
 
 .sp-menu #open {
     font-size: 32px;
@@ -419,27 +638,83 @@ button {
 }
 
 .sp-menu #open.hide {
-    display: none;
-}
-
-main {
-    padding: 0 16px;
+filter: drop-shadow(0 0 6px rgb(255, 255, 255, 0.6));
+transition: opacity .6s;
 }
 
 .overlay.show {
-    height: 400px;
-    top: 60px;
+    height: 100%;
+    top: 70px;
     opacity: 1;
     pointer-events: auto;
     transition: opacity .6s;
+    width: 100%;
+    background: rgb(0, 0, 0, 0.2);
 }
 
 .overlay #close {
+    opacity: 0;
+    position: absolute;
+    top: -50px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+}
+.overlay .active {
     position: absolute;
     top: 16px;
     right: 20px;
     font-size: 32px;
     cursor: pointer;
+}
+
+/* search画面 */
+
+.search-all {
+    width: 40%;
+    margin: 0 auto;
+}
+.search-all .user-search {
+    width: 100%;
+    margin: 40px auto;
+}
+.search-all .user-search form {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+.search-all .user-search input:nth-child(1) {
+    width: 70%;
+}
+.search-all .user-search input:nth-child(2) {
+    width: 20%;
+    text-align: center;
+        font-weight: bold;
+        background: #00AFE2;
+        border: 2px solid #00AFE2;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 1rem;
+}
+.search-all .user-search input:nth-child(2):hover {
+        background: #fff;
+        border-radius: 4px;
+        border: 2px solid #00AFE2;
+        color: #00AFE2;
+        cursor: pointer;
+        transition: 0.3s;
+}
+.search-all form {
+    text-align: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search .tweet-icon {
+    margin: 0;
 }
 
 .search-list {
@@ -452,13 +727,16 @@ main {
 
 .search-list img {
     display: block;
-    width: 40px;
+    width: auto;
+    height: 50px;
 }
 
 .after-search {
     display: block;
     width: 200px;
     margin-left: 8px;
+    color: #000;
+    font-weight: bold;
 }
 
 
@@ -480,7 +758,6 @@ main {
 .user-list-box {
     display: flex;
     align-items: center;
-    margin-top: 20px;
 }
 
 /* フォロー/フォロワーリスト */
@@ -501,13 +778,14 @@ margin: 24px 0;
     margin-bottom: 4px;
 }
 
-.list-images .list-icon {
+.list-images .list-icon .top-list-images {
     filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.25));
 
 }
 
-.top-icon {
+.list-icon {
     margin-right: 1rem;
+    filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.2));
 }
 
 
@@ -517,6 +795,9 @@ margin: 24px 0;
 }
 .follow-posts .posts {
     margin: 1rem;
+}
+.follow-posts button {
+    margin-left: 6rem;
 }
 
 .line {
