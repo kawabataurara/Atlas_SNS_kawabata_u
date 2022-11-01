@@ -77,10 +77,10 @@ button {
 }
  .header-list .header-icon {
     margin: 0 10px;
-}
- .header-list .header-icon {
     height: 40px;
+    border-radius: 50%;
 }
+
  .header-list .header-menu {
     height: 20px;
 }
@@ -257,6 +257,40 @@ button {
     border: 2px solid #000;
     transition: 0.3s;
 }
+.search-all .follow-btn {
+    text-align: center;
+    font-weight: bold;
+    background: #00AFE2;
+    border: 2px solid #00AFE2;
+    border-radius: 4px;
+    width: 100%;
+    margin: 30px auto;
+    color: #fff;
+    padding: 1rem;
+}
+.search-all.follow-btn:hover {
+    background-color: #fff;
+    color: #00AFE2;
+    border: 2px solid #00AFE2;
+    transition: 0.3s;
+}
+.by {
+    text-align: center;
+    font-weight: bold;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 4px;
+    width: 100%;
+    margin: 30px auto;
+    color: #000;
+    padding: 1rem;
+}
+.by:hover {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    transition: 0.3s;
+}
 
 
 /* プロフィール編集画面 */
@@ -270,6 +304,9 @@ button {
     filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.25));
     text-align: center;
     margin: 2rem 0;
+}
+.editing-all .editing-user-icon img {
+    border-radius: 50%;
 }
 
 .editing-all button{
@@ -339,6 +376,7 @@ button {
 .tweet .top-icon {
     height: 70px;
     filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.2));
+    border-radius: 50%;
 }
 
 .tweet-icon {
@@ -346,6 +384,7 @@ button {
     width: auto;
     height: 50px;
     filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.2));
+    border-radius: 50%;
 }
 .top-list-images {
     position: absolute;
@@ -684,25 +723,28 @@ transition: opacity .6s;
     height: 40px;
 }
 .search-all .user-search input:nth-child(1) {
+    border: none;
     width: 70%;
+    background: #F2F2F2;
+    border-radius: 2px;
 }
 .search-all .user-search input:nth-child(2) {
     width: 20%;
     text-align: center;
-        font-weight: bold;
-        background: #00AFE2;
-        border: 2px solid #00AFE2;
-        border-radius: 4px;
-        color: #fff;
-        font-size: 1rem;
+    font-weight: bold;
+    background: #00AFE2;
+    border: 2px solid #00AFE2;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
 }
 .search-all .user-search input:nth-child(2):hover {
-        background: #fff;
-        border-radius: 4px;
-        border: 2px solid #00AFE2;
-        color: #00AFE2;
-        cursor: pointer;
-        transition: 0.3s;
+    background: #fff;
+    border-radius: 4px;
+    border: 2px solid #00AFE2;
+    color: #00AFE2;
+    cursor: pointer;
+    transition: 0.3s;
 }
 .search-all form {
     text-align: center;
@@ -729,6 +771,7 @@ transition: opacity .6s;
     display: block;
     width: auto;
     height: 50px;
+    border-radius: 50%;
 }
 
 .after-search {
@@ -786,6 +829,7 @@ margin: 24px 0;
 .list-icon {
     margin-right: 1rem;
     filter: drop-shadow(2px 2px 2px rgb(3, 60, 60, 0.2));
+    border-radius: 50%;
 }
 
 

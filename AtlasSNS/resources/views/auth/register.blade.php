@@ -12,21 +12,21 @@
 {{ Form::text('username', null, ['class' => 'input', 'placeholder' =>'アトラス新一']) }}
 
 @error('username')
-  <li>{{$message}}</li>
+  <p class="error">{{$message}}</p>
 @enderror
 
 <p class="label-text">{{ Form::label('メールアドレス') }}</p>
 {{ Form::text('mail',null,['class' => 'input', 'placeholder' =>'shinichi@atlas.com']) }}
 
 @error('mail')
-  <li>{{$message}}</li>
+  <p class="error">{{$message}}</p>
 @enderror
 
 <p class="label-text">{{ Form::label('パスワード') }}</p>
 {{ Form::text('password',null,['class' => 'input', 'placeholder' =>'tuyosounayatu123']) }}
 
 @error('password')
-  <li>{{$message}}</li>
+  <p class="error">{{$message}}</p>
 @enderror
 
 

@@ -84,6 +84,14 @@ p {
 .label-text .input {
     background-color: #fff !important;
 }
+.register-body .error {
+    display: block;
+    font-size: 14px;
+    color: red;
+    text-align: left;
+    width: 20%;
+    margin: 0 auto;
+}
 .logout-container .input {
     display: block;
     width: 20%;
