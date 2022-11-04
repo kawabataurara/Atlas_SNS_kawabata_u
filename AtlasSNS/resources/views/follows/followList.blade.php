@@ -18,7 +18,7 @@
         @foreach ($followPost as $userImages)
         <div class="post-list">
             <div class="list-images">
-                    <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="60" height="60" class="list-icon">
+                    <a href="/user/{{$userImages->id}}/profile" ><img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="60" height="60" class="list-icon"></a>
             </div>
             <div class="posts">
                 <div class="nameAndDate">

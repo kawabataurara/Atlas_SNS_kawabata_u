@@ -7,7 +7,7 @@
     <section class="follow-posts">
         <div class="profile">
             <div class="list-images">
-                    <img src="{{ asset( 'storage/' . $data->images)}}" alt="" width="50" height="50" class="list-icon">
+                    <img src="{{ asset( 'storage/' . $data->images)}}" alt="" width="70" height="70" class="list-icon">
             </div>
             <div class="usersProfile">
                 <p class="profileName">{{$data->username}}</p>

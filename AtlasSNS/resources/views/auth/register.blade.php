@@ -9,21 +9,21 @@
 {{-- <h2>新規ユーザー登録</h2> --}}
 
 <p class="label-text">{{ Form::label('ユーザー名') }}</p>
-{{ Form::text('username', null, ['class' => 'input', 'placeholder' =>'アトラス新一']) }}
+<p class="form">{{ Form::text('username', null, ['class' => 'input', 'placeholder' =>'アトラス新一']) }}</p>
 
 @error('username')
   <p class="error">{{$message}}</p>
 @enderror
 
 <p class="label-text">{{ Form::label('メールアドレス') }}</p>
-{{ Form::text('mail',null,['class' => 'input', 'placeholder' =>'shinichi@atlas.com']) }}
+<p class="form">{{ Form::text('mail',null,['class' => 'input', 'placeholder' =>'shinichi@atlas.com']) }}</p>
 
 @error('mail')
   <p class="error">{{$message}}</p>
 @enderror
 
 <p class="label-text">{{ Form::label('パスワード') }}</p>
-{{ Form::text('password',null,['class' => 'input', 'placeholder' =>'tuyosounayatu123']) }}
+<p class="form">{{ Form::password('password',null,['class' => 'input', 'placeholder' =>'tuyosounayatu123']) }}</p>
 
 @error('password')
   <p class="error">{{$message}}</p>
@@ -31,7 +31,7 @@
 
 
 <p class="label-text">{{ Form::label('パスワード確認') }}</p>
-{{ Form::text('password_confirmation',null,['class' => 'input', 'placeholder' =>'tuyosounayatu123']) }}
+<p class="form">{{ Form::password('password_confirmation',null,['class' => 'input', 'placeholder' =>'tuyosounayatu123']) }}</p>
 
 
 

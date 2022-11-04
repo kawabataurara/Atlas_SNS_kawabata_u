@@ -10,6 +10,9 @@
                 <input type="text" name="keyword" value="{{ $keyword }}">
                 <input type="submit" value="検索">
             </form>
+            <div class="search-after">
+                <p>検索ワード：{{ $keyword }}</p>
+            </div>
         </section>
 
 
@@ -17,9 +20,9 @@
         <section class="search">
     <div class="user-list-box">
         @if($user->id !== Auth::user()->id)
-        <div class="search-list tweet-icon">
+        <div class="search-list">
             <tr>
-                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon">
+                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon tweet-icon">
                 <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">
                     {{ $user->username }}
                 </td></a>

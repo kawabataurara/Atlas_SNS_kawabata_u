@@ -9,11 +9,11 @@
 <div class="logout-container">
 
 <p class="label-text">{{ Form::label('e-mail') }}</p>
-<p>{{ Form::text('mail',null,['class' => 'input']) }}</p>
+<p class="form">{{ Form::text('mail',null,['class' => 'input']) }}</p>
 
 
 <p class="label-text">{{ Form::label('password') }}</p>
-<p>{{ Form::password('password', ['class' => 'input']) }}</p>
+<p class="form">{{ Form::password('password', ['class' => 'input']) }}</p>
 
 @error('password')
    <span class="invalid-feedback" role="alert">

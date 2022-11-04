@@ -92,7 +92,8 @@ p {
     width: 20%;
     margin: 0 auto;
 }
-.logout-container .input {
+
+.logout-container .form input{
     display: block;
     width: 20%;
     height: 34px;
@@ -334,11 +335,11 @@ font-weight: bold;
         width: 40%;
     }
 
-    .logout-container .input, .label-text, .login-next {
+    .logout-container .form input, .label-text, .login-next {
         width: 100%;
     }
 
-    .logout-container .input  {
+    .logout-container .form input  {
         height: 40px;
     }
 
