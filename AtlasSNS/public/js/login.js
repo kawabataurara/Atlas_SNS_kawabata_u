@@ -5,26 +5,39 @@
     const open = document.getElementById('open');
     const search = document.getElementById('search');
     const overlay = document.querySelector('.overlay');
+    // const menu = document.querySelectorAll('.menu-open');
     const close = document.getElementById('close');
 
 
-    open.addEventListener('click', () => {
-        overlay.classList.add('show');
-        open.classList.add('hide');
-    });
+    // menu.forEach(div => {
+    //     dt.addEventListener('click', () => {
+    //         dt.parentNode.classList.toggle('appear');
+
+    // $(".openbtn1").click(function () {
+    //     $(this).toggleClass('after');
+    //     overlay.classList.add('show');
+    //     open.classList.add('hide');
+    // });
+
+
+
+    // open.addEventListener('click', () => {
+    //     overlay.classList.add('show');
+    //     open.classList.add('hide');
+    //     open.getElementById.add('close');
+    //     // close.classList.remove('menu-close');
+    // });
 
     search.addEventListener('click', function (event) {
         event.stopPropagation();
     });
 
-    // document.getElementById('close').addEventListener('click', (e) => {
-    //     e.stopPropagation();
-    // });
 
-    close.addEventListener('click', () => {
-        overlay.classList.remove('show');
-        open.classList.remove('hide');
-    });
+    // close.addEventListener('click', () => {
+    //     overlay.classList.remove('show');
+    //     open.classList.remove('hide');
+    //     // open.classList.add('closing');
+    // });
 
 
 }
@@ -33,11 +46,11 @@
 
 $(function () {
 
-    // $('#open').on('click', function () {//.btn_triggerをクリックすると
-    //     $('#open').toggleClass('cross');//.btn_triggerにcrossクラスを付与(ボタンのアニメーション)
-    //     $('.overlay').toggleClass('fade');//.overlayに
-    //     $('body').toggleClass('noscroll');//bodyにnoscrollクラスを付与(スクロールを固定)
-    // });
+    $('.menu-open').click(function () {
+        $(this).toggleClass('selected');
+        $(this).next().slideToggle();
+    });
+
 
 
         // 編集ボタン(class="js-modal-open")が押されたら発火

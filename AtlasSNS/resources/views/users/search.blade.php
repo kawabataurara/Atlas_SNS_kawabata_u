@@ -58,6 +58,6 @@
     @endforeach
 
 
-    @endsection
 </main>
 </div>
+@endsection

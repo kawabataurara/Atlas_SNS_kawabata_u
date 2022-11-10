@@ -33,30 +33,23 @@
                     <div class="user-profile">
                     <p class="username-box">{{ Auth::user()->username }}さん</p>
                     <img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="header-icon" alt="icon">
-                    <div class="menu">
-                        <div class="sp-menu">
-                            <span class="menu" id="open">
-                                <img src="{{ asset('images/header-menu.png') }}" class="header-menu" alt="">
-                            </span>
+                         <section class="menu-all">
+                        <p class="menu-open" id="open"></p>
+                            <div class="overlay">
+                                <nav>
+                                    <ul>
+                                        <a href="/top"><li>ホーム</li></a>
+                                    <a href="/editing"><li>プロフィール編集</li></a>
+                                        <a href="/logout"><li>ログアウト</li></a>
+                                    </ul>
+                                </nav>
+                             </div>
+                            </section>
                         </div>
                     </div>
                  </div>
                   </div>
                    </div>
-
-                            <div class="overlay">
-                                    <span class="" id="close">close</span>
-                                            <nav>
-                                                <ul>
-                                                    <a href="/top"><li>ホーム</li></a>
-                                                   <a href="/editing"><li>プロフィール編集</li></a>
-                                                    <a href="/logout"><li>ログアウト</li></a>
-                                                </ul>
-                                            </nav>
-                                        </div>
-
-
-                            </div>
                         </header>
                         <div id="row">
                             <div id="container">
@@ -68,6 +61,7 @@
                         </div>
                         <footer>
                         </footer>
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
                          <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                          <script src="{{ asset('/js/login.js') }}"></script>
                     </body>
