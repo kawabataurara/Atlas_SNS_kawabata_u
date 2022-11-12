@@ -9,7 +9,7 @@
 body{
     margin: 0;
     font-family: "M PLUS 1p", "Segoe UI", "Meiryo", "system-ui", "-apple-system", "BlinkMacSystemFont", sans-serif;
-    color: #36303F;
+    color: #000;
     font-size: 16px;
 }
 
@@ -32,7 +32,10 @@ button {
     padding: 0;
     vertical-align: middle;
 }
-/* header */
+header {
+    position: relative;
+    z-index: 4;
+}
 
 /* main content */
 #row{
@@ -66,11 +69,11 @@ button {
 .logo-img img{
     display: block;
     width: 80px;
-    padding-left: 20px;
+    padding-left: 2rem;
 }
 
  .header-list {
-    padding-right: 20px;
+    padding-right: 2rem;
     display: flex;
     margin: 0 0 0 auto;
 }
@@ -136,6 +139,7 @@ button {
 
 .overlay {
     display: none;
+    margin-right: 2rem;
 }
 
 
@@ -195,7 +199,7 @@ button {
 }
 
  .overlay li a {
-    color: #36303F;
+    color: #000;
     text-align: right;
 }
 
@@ -279,17 +283,17 @@ button {
 .login-next {
     text-align: center;
     font-weight: bold;
-    background: #fff;
+    background: #000;
     border: 2px solid #000;
     border-radius: 4px;
     width: 100%;
     margin: 30px auto;
-    color: #000;
+    color: #fff;
     padding: 1rem;
 }
 .login-next:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border: 2px solid #000;
     transition: 0.3s;
 }
