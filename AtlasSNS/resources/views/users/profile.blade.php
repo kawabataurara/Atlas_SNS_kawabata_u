@@ -7,7 +7,11 @@
     <section class="follow-posts">
         <div class="profile">
             <div class="list-images">
-                    <img src="{{ asset( 'storage/img/' . $data->images)}}" alt="" width="70" height="70" class="list-icon">
+                @if ($data->images==='icon1.png')
+                    <p><img src="{{ asset('images/icon1.png') }}" class="list-icon" alt="icon"></p>
+                @else
+                    <p><img src="{{ asset( 'storage/img/' . $data->images)}}" alt="" width="70" height="70" class="list-icon"></p>
+                @endif
             </div>
             <div class="usersProfile">
                 <p class="profileName">{{$data->username}}</p>
@@ -36,7 +40,7 @@
         <div class="post-list">
             <div class="list-images">
                 @if ($data->images==='icon1.png')
-                    <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+                    <p><img src="{{ asset('images/icon1.png') }}" class="list-icon" alt="icon"></p>
                 @else
                     <p><img src="{{ asset( 'storage/img/' . $data->images)}}" alt="" width="50" height="50" class="list-icon"></p>
                 @endif

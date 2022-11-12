@@ -8,7 +8,7 @@
 
     <div class="tweet">
         @if (Auth::user()->images==='icon1.png')
-        <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+        <p><img src="{{ asset('images/icon1.png') }}" class="top-icon" alt="icon"></p>
         @else
         <p><img src="{{ asset( 'storage/img/' . Auth::user()->images) }}" class="top-icon" alt="icon"></p>
         @endif
@@ -25,7 +25,11 @@
         @foreach($followPost as $followData)
         <main class="main">
             <div class="top-list-images">
-                    <img src="{{ asset( 'storage/img/' . $followData->user->images) }}" class="tweet-icon listi-con" alt="icon">
+                @if ($followData->user->images==='icon1.png')
+                    <p><img src="{{ asset('images/icon1.png') }}" class="tweet-icon listi-con" alt="icon"></p>
+                @else
+                    <p><img src="{{ asset( 'storage/img/' . $followData->user->images) }}" class="tweet-icon listi-con" alt="icon"></p>
+                @endif
                 </div>
         <section class="tweet-list">
                 <div class="post-list">

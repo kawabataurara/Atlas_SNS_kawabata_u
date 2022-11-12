@@ -34,7 +34,7 @@
                     <p class="username-box">{{ Auth::user()->username }}さん</p>
 
                     @if (Auth::user()->images=='icon1.png')
-                     <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+                     <p><img src="{{ asset('images/icon1.png') }}" class="header-icon" alt="icon"></p>
                     @else
                      <img src="{{ asset( 'storage/img/' . Auth::user()->images) }}" class="header-icon" alt="icon">
                      @endif

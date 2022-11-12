@@ -23,11 +23,10 @@
         <div class="search-list">
             <tr>
                 @if ($user->images==='icon1.png')
-                    <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+                    <p><img src="{{ asset('images/icon1.png') }}" class="tweet-icon" alt="icon"></p>
                 @else
-                    <p><img src="{{ asset( 'storage/img/' . $user->images)}}" alt="icon tweet-icon"></p>
+                    <p><img src="{{ asset( 'storage/img/' . $user->images)}}" alt="icon" class="tweet-icon"></p>
                 @endif
-                {{-- <img src="{{ asset( 'storage/img/' . $user->images)}}" alt="icon tweet-icon"> --}}
                 <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">
                     {{ $user->username }}
                 </td></a>
