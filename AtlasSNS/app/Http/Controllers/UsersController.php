@@ -63,7 +63,7 @@ class UsersController extends Controller
 
         // もし画像があれば
         if($request->hasFile('images')){
-        $path = $request->file('images')->store('public');
+        $path = $request->file('images')->store('public/img');
         // $user->images = basename($path);
         \DB::table('users')
         ->where('id', $id)

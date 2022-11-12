@@ -120,9 +120,10 @@ header {
 
 .user-profile img {
     display: block;
-    /* height: 30px; */
+    height: 30px;
     width: auto;
     float: left;
+    margin: 0 1rem;
 }
 /* メニューボタン */
 

@@ -14,21 +14,26 @@
         <div class="bold-line"></div>
 
     <section class="follow-posts">
-        @foreach ($followerPost as $userImages)
-        <div class="post-list">
-            <div class="list-images">
-                    <img src="{{ asset( 'storage/' . $userImages->user->images)}}" alt="" width="60" height="60" class="list-icon">
-            </div>
-            <div class="posts">
-                <div class="nameAndDate">
-                <p class="nameAndDate-child name-child">{{$userImages->user->username}}</p>
-                <p class="nameAndDate-child date-child">{{$userImages->updated_at}}</p>
+            @foreach ($followerPost as $userImages)
+            <div class="post-list">
+                <div class="list-images">
+                    @if ($userImages->user->images==='icon1.png')
+                        <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+                    @else
+                        <img src="{{ asset( 'storage/img/' . $userImages->user->images)}}" alt="" width="60" height="60" class="list-icon">
+                    @endif
                 </div>
-                <p class="post">{{$userImages->post}}</p>
+                <div class="posts">
+                    <div class="nameAndDate">
+                    <p class="nameAndDate-child name-child">{{$userImages->user->username}}</p>
+                    <p class="nameAndDate-child date-child">{{$userImages->updated_at}}</p>
+                    </div>
+                    <p class="post">{{$userImages->post}}</p>
+                </div>
             </div>
-        </div>
-        <div class="line"></div>
-    @endforeach
+            <div class="line"></div>
+        @endforeach
+
     </section>
 </div>
 @endsection

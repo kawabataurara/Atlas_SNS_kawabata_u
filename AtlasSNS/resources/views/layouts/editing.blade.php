@@ -9,7 +9,12 @@
         {!! Form::hidden('id', $auth->id) !!}
 
         <div class="editing-user-icon">
-           <img src="{{ asset( 'storage/' . Auth::user()->images) }} " width="100" height="100" alt="icon">
+            @if (Auth::user()->images=='icon1.png')
+                <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+            @else
+                <img src="{{ asset( 'storage/img/' . Auth::user()->images) }} " width="100" height="100" alt="icon">
+            @endif
+
         </div>
 
             <div class="editing-list">

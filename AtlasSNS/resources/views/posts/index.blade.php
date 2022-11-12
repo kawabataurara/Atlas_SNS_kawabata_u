@@ -7,7 +7,11 @@
     {{ csrf_field() }}
 
     <div class="tweet">
-        <img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="top-icon" alt="icon">
+        @if (Auth::user()->images==='icon1.png')
+        <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+        @else
+        <p><img src="{{ asset( 'storage/img/' . Auth::user()->images) }}" class="top-icon" alt="icon"></p>
+        @endif
         <textarea class="tweet-text" name="post" placeholder="投稿内容を入力してください。"></textarea>
         {{-- <input type="image" class="tweet-btn" name="submit" src="{{ asset('images/post.png') }}" alt="投稿"> --}}
         <input type="submit" class="tweet-btn" name="submit"value="つぶやく" alt="投稿">
@@ -21,7 +25,7 @@
         @foreach($followPost as $followData)
         <main class="main">
             <div class="top-list-images">
-                    <img src="{{ asset( 'storage/' . $followData->user->images) }}" class="tweet-icon listi-con" alt="icon">
+                    <img src="{{ asset( 'storage/img/' . $followData->user->images) }}" class="tweet-icon listi-con" alt="icon">
                 </div>
         <section class="tweet-list">
                 <div class="post-list">

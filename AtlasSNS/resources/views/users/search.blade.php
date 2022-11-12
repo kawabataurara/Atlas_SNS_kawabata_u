@@ -22,7 +22,12 @@
         @if($user->id !== Auth::user()->id)
         <div class="search-list">
             <tr>
-                <img src="{{ asset( 'storage/' . $user->images)}}" alt="icon tweet-icon">
+                @if ($user->images==='icon1.png')
+                    <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+                @else
+                    <p><img src="{{ asset( 'storage/img/' . $user->images)}}" alt="icon tweet-icon"></p>
+                @endif
+                {{-- <img src="{{ asset( 'storage/img/' . $user->images)}}" alt="icon tweet-icon"> --}}
                 <td><a href="{{ route('users.search' , $user->id) }}"class="after-search">
                     {{ $user->username }}
                 </td></a>

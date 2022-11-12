@@ -32,7 +32,13 @@
                 <div class="header-list">
                     <div class="user-profile">
                     <p class="username-box">{{ Auth::user()->username }}さん</p>
-                    <img src="{{ asset( 'storage/' . Auth::user()->images) }}" class="header-icon" alt="icon">
+
+                    @if (Auth::user()->images=='icon1.png')
+                     <p><img src="{{ asset('images/icon1.png') }}" alt="icon"></p>
+                    @else
+                     <img src="{{ asset( 'storage/img/' . Auth::user()->images) }}" class="header-icon" alt="icon">
+                     @endif
+
                          <section class="menu-all">
                         <p class="menu-open" id="open"></p>
                             <div class="overlay">
